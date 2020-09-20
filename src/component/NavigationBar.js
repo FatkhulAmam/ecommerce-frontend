@@ -22,10 +22,10 @@ class NavigationBar extends React.Component{
             <NavbarToggler className="navbar-light" onClick = {()=>this.setState({navbarOpen: !this.state.navbarOpen})} />
             <Collapse navbar isOpen = {this.state.navbarOpen} >
               <Nav navbar className="ml-auto">
-                <NavItem>
+                <NavItem className="mr-5">
                   <NavLink href="#"><img src={bell} alt="bell logo"/></NavLink>
                 </NavItem>
-                <NavItem>
+                <NavItem className="mr-5">
                   <NavLink href="#"><img src={mail} alt="mail logo"/></NavLink>
                 </NavItem>
                 <NavItem>

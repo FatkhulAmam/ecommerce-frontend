@@ -4,7 +4,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 // importting page
 import Home from './pages/home'
 import Episode from './pages/Episode'
-import Items from './pages/items'
+import Product from './pages/Product'
+import Edit from './pages/edit'
 
 class App extends React.Component{
   render(){
@@ -13,7 +14,8 @@ class App extends React.Component{
         <Switch>
           <Route path="/" component={Home} exact />
           <Route path="/episode" component={Episode} />
-          <Route path="/items" component={Items}/>
+          <Route path="/edit/:id" component={Edit}/>
+          <Route path="/product" component={Product}/>
         </Switch>
       </BrowserRouter>
     )
