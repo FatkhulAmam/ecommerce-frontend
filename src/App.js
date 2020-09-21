@@ -3,7 +3,7 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 // importting page
 import Home from './pages/home'
-import Episode from './pages/Episode'
+import Login from './pages/Login'
 import Product from './pages/Product'
 import Edit from './pages/edit'
 
@@ -13,7 +13,7 @@ class App extends React.Component{
       <BrowserRouter>
         <Switch>
           <Route path="/" component={Home} exact />
-          <Route path="/episode" component={Episode} />
+          <Route path="/login" component={Login} />
           <Route path="/edit/:id" component={Edit}/>
           <Route path="/product" component={Product}/>
         </Switch>

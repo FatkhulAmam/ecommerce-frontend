@@ -33,15 +33,6 @@ class edit extends React.Component{
         console.log(this.state)
     }
 
-    // async componentDidMount(){
-    //     await this.category()
-    // }
-
-    // getCategory = async() => {
-    //     const {category} = await axios.get(`http://localhost:8180/category`)
-    //     this.setState({category: category.data})
-    // }
-
     handlerChange = (e) => {
         this.setState({
             [e.target.name] : e.target.value

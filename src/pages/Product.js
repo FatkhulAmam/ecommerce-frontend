@@ -1,14 +1,15 @@
 import React from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
-import Navbar from '../component/NavigationBar'
+import Navbar from '../component/navSearchBar'
 import { 
     Container,
     Row, Col,
-    Card, CardBody, CardTitle, CardSubtitle,
+    Card, CardBody, CardTitle, CardSubtitle, CardImg,
     Modal, ModalBody, ModalHeader, ModalFooter,
     Button 
 } from 'reactstrap'
+import suit from '../assets/image/suit.png'
 
 class Product extends React.Component{
     constructor(props){
@@ -43,6 +44,11 @@ class Product extends React.Component{
         })
     }
 
+    searchData = async (key) => {
+        const {data} = await axios.get(`http://localhost:8180/items/?search=${key}`)
+        this.setState({showData: data.data})
+    }
+
     deleteProduct = async (id)=>{
         await axios.delete(`http://localhost:8180/items/${id}`)
         this.setState({modalOpen: false},() =>{
@@ -65,6 +71,7 @@ class Product extends React.Component{
                         return(
                             <Col sm={6} md={3} className="mt-4">
                                 <Card className="shadow-sm">
+                                <CardImg src={suit}/>
                                     <CardBody>
                                         <CardTitle><h4>{item.name}</h4></CardTitle>
                                         <CardSubtitle><h6>{item.category_name}</h6></CardSubtitle>
