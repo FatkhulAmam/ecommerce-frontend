@@ -1,11 +1,15 @@
 import React from 'react'
-import { Container, Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, Input, Col, Button, ButtonGroup } from 'reactstrap'
+import { 
+  Container, Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, Input, Form, Button, ButtonGroup, FormText 
+} from 'reactstrap'
+
+// import style
+// import '../assets/style/style.css'
 
 //import assets
 import logo from '../assets/image/logo.svg'
 import cart from '../assets/image/shoppingCart.svg'
 import search from '../assets/image/Search.svg'
-import '../assets/style/style.css'
 
 class NavSearchBar extends React.Component{
     constructor(props){
@@ -18,11 +22,15 @@ class NavSearchBar extends React.Component{
         return(
         <Navbar expand="md" className="shadow-sm">
           <Container>
-            <NavbarBrand><img className="logo" src={logo} alt="logo brand"/></NavbarBrand>
-                <ButtonGroup>
-                  <Input className="search-box" placeholder="search..."></Input>
-                  <Button className="bg-white btn-src"><img src={search} alt="search"/></Button>
-                </ButtonGroup>
+            <NavbarBrand>
+              <img className="logo" src={logo} alt="logo brand"/>
+            </NavbarBrand>
+            <Form>
+              <ButtonGroup>
+                <Input className="search-box" placeholder="search..."></Input>
+                <Button className="bg-white btn-src" type="submit"><img src={search} alt="search"/></Button>
+              </ButtonGroup>
+            </Form>
             <NavbarToggler className="navbar-light" onClick = {()=>this.setState({navbarOpen: !this.state.navbarOpen})} />
             <Collapse navbar isOpen = {this.state.navbarOpen} >
               <Nav navbar className="ml-auto">
