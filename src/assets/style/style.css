@@ -1,0 +1,22 @@
+.search-box{
+    border-radius: 50px 0 0 50px;
+    width: 100px;
+    height: 30px;
+}
+.logo{
+    width: 100px;
+}
+.btn-src{
+    border-radius: 0 50px 50px 0;
+    height: 30px;
+}
+
+@media (min-width: 576px) { 
+    .search-box{
+        border-radius: 50px 0 0 50px;
+        width: 400px;
+    }
+    .logo{
+        width: 150px;
+    }
+ }

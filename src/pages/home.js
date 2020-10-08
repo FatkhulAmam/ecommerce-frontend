@@ -42,8 +42,14 @@ function Home() {
                 <img src={gb2} alt='img6'></img>
                 <img src={cloth} alt='img7'></img>
             </Caroucel>
+            <hr/>
             </Container>
-            
+            <Container>
+            <body>
+                <h3>New</h3>
+
+            </body>
+            </Container>
         </React.Fragment>
     )
 }

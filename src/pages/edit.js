@@ -21,7 +21,7 @@ class edit extends React.Component{
 
     componentDidMount= async ()=>{
         const id = this.props.match.params.id
-        const res = await axios.get(`http://localhost:8180/items/${id}`)
+        const res = await axios.get(`http://localhost:8180/product/${id}`)
         
         this.setState({
             id: res.data.data.id,
@@ -41,7 +41,7 @@ class edit extends React.Component{
 
     handlerSubmit = async (event) => {
         event.preventDefault()
-        await axios.put(`http://localhost:8180/items/${this.state.id}`, qs.stringify({name: this.state.name, price: this.state.price, category: this.state.category, description: this.state.description}))
+        await axios.put(`http://localhost:8180/product/${this.state.id}`, qs.stringify({name: this.state.name, price: this.state.price, category: this.state.category, description: this.state.description}))
         this.props.history.push('/product')
     }
 
