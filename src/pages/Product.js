@@ -25,7 +25,7 @@ class Episode extends Component {
         <Row>
         {!isLoading && !isError && data.length!==0 && data.map(item=>{
             return(
-            <Col sm={6} md={3} className="mt-4">
+            <Col md={3} className="mt-4">
                 <Card className="shadow-sm">
                     <CardImg src={suit}/>
                     <CardBody>
