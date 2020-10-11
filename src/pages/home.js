@@ -1,57 +1,61 @@
-import React from 'react'
-import Caroucel from 'react-elastic-carousel'
-import NavSearch from '../component/navSearchBar'
-import gb1 from '../assets/image/corou1.png'
-import gb2 from '../assets/image/corou2.png'
-import cloth from '../assets/image/baju.png'
+import React, { Component } from 'react'
+import {connect} from 'react-redux'
+import Navbar from '../component/navSearchBar'
+import '../assets/style/style.css'
+import { 
+    Container,
+    Row, Col,
+    Card, CardBody, CardTitle, CardSubtitle, CardImg
+} from 'reactstrap'
+import bgProduct from '../assets/image/bgProduct.png'
 
-import {Container} from 'reactstrap'
+import productAction from '../redux/actions/product'
 
-function Home() {
-    const breakPoints01 = [
-        {width: 1, itemsToShow: 1},
-        {width: 768, itemsToShow: 2}
-    ];
-    const breakPoints02 = [
-        {width: 1, itemsToShow: 1},
-        {width: 500, itemsToShow: 2},
-        {width: 780, itemsToShow: 3},
-        {width: 1200, itemsToShow: 4},
-        {width: 1500, itemsToShow: 5}
-    ];
-
+class Product extends Component {
+  componentDidMount() {
+    this.props.getProduct()
+  }
+  
+  render() {
+    const {isLoading, data, isError, alertMsg} = this.props.product
     return (
-        <React.Fragment>
-            <NavSearch />
-            <Container>
-            <Caroucel className="mt-3" breakPoints={breakPoints01}>
-                <img src={gb1} alt='caroucel01'></img>
-                <img src={gb2} alt='caroucel02'></img>
-                <img src={gb1} alt='caroucel03'></img>
-                <img src={gb2} alt='caroucel04'></img>
-                <img src={gb1} alt='caroucel05'></img>
-                <img src={gb2} alt='caroucel06'></img>
-                <img src={gb1} alt='caroucel07'></img>
-            </Caroucel>
-            <Caroucel className="mt-3" breakPoints={breakPoints02}>
-                <img src={cloth} alt='img1'></img>
-                <img src={gb2} alt='img2'></img>
-                <img src={gb1} alt='img3'></img>
-                <img src={cloth} alt='img4'></img>
-                <img src={gb1} alt='img5'></img>
-                <img src={gb2} alt='img6'></img>
-                <img src={cloth} alt='img7'></img>
-            </Caroucel>
-            <hr/>
-            </Container>
-            <Container>
-            <body>
-                <h3>New</h3>
-
-            </body>
-            </Container>
-        </React.Fragment>
+      <>
+        <Navbar />
+        <Container className="mt-4">
+        <h3>New</h3>
+        <Row>
+        {!isLoading && !isError && data.length!==0 && data.map(item=>{
+            return(
+            <Col className="mt-4">
+                <Card className="shadow-sm">
+                    <CardImg className='default-img' src={bgProduct}/>
+                    <CardBody>
+                        <CardTitle><h4>{item.name}</h4></CardTitle>
+                        <CardSubtitle><h6>{item.category_name}</h6></CardSubtitle>
+                        <CardSubtitle>{item.price}</CardSubtitle>
+                    </CardBody>
+                </Card>
+            </Col>
+        )})}
+        </Row>
+        </Container>
+        {isLoading&& !isError && (
+          <div>Loading</div>
+        )}
+        {isError&& alertMsg!=='' && (
+          <div>{alertMsg}</div>
+        )}
+      </>
     )
+  }
 }
 
-export default Home
+const mapStateToProps = state => ({
+  product: state.product
+})
+
+const mapDispatchToProps = {
+  getProduct: productAction.getData
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product)

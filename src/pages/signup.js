@@ -1,5 +1,5 @@
 import React from 'react'
-import {Container, Row, Button, ButtonGroup , Col, Form, FormGroup, Input, FormText} from 'reactstrap'
+import {Container, Button, ButtonGroup, Form, Input, FormText} from 'reactstrap'
 import {Link} from 'react-router-dom'
 
 import logo from '../assets/image/logo.svg'

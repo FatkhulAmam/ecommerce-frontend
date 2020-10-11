@@ -4,14 +4,13 @@ import {
     Container,
     Row, Col,
     Card, CardBody, CardTitle, CardSubtitle, CardImg,
-    Modal, ModalBody, ModalHeader, ModalFooter,
-    Button 
+    Button
 } from 'reactstrap'
 import suit from '../assets/image/suit.png'
 
 import productAction from '../redux/actions/product'
 
-class Episode extends Component {
+class Product extends Component {
   componentDidMount() {
     this.props.getProduct()
   }
@@ -58,4 +57,4 @@ const mapDispatchToProps = {
   getProduct: productAction.getData
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Episode)
+export default connect(mapStateToProps, mapDispatchToProps)(Product)
