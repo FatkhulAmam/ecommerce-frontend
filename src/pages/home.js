@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import Navbar from '../component/navSearchBar'
+import Navbar from '../component/NavSearchBar'
 import '../assets/style/style.css'
 import { 
     Container,
@@ -15,7 +15,6 @@ class Product extends Component {
   componentDidMount() {
     this.props.getProduct()
   }
-  
   render() {
     const {isLoading, data, isError, alertMsg} = this.props.product
     return (
@@ -27,10 +26,10 @@ class Product extends Component {
         {!isLoading && !isError && data.length!==0 && data.map(item=>{
             return(
             <Col className="mt-4">
-                <Card className="shadow-sm">
+                <Card className="card-home shadow-sm">
                     <CardImg className='default-img' src={bgProduct}/>
                     <CardBody>
-                        <CardTitle><h4>{item.name}</h4></CardTitle>
+                        <CardTitle><h5>{item.name}</h5></CardTitle>
                         <CardSubtitle><h6>{item.category_name}</h6></CardSubtitle>
                         <CardSubtitle>{item.price}</CardSubtitle>
                     </CardBody>

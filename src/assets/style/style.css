@@ -1,4 +1,21 @@
-.btn{
+/* navigasi style */
+.btn-nav{
+    width: 100px;
+    background-color: #00ff00;
+    border: none;
+}
+.search-box{
+    width: 400px;
+    border-radius: 25px 0 0 25px;
+}
+.btn-src{
+    border-radius: 0 25px 25px 0;
+    border-left-color: white;
+    outline: none;
+}
+
+
+.btn-custommer, .btn-seller, .btn-auth{
     background-color: white;
     border-color: #00ff00;
     color: #00ff00;
@@ -11,12 +28,18 @@
     background-color: #00ff00;
     border-color: #00ff00
 }
-.card {
-    width: 175px;
-    height: 250px;
+.card-home{
+    margin-left: -10px;
+    width: 200px;
+    height: 300px;
 }
 .default-img{
-    margin-bottom: -20px;
-    width: 175px;
-    height: 125px;
+    margin-bottom: -10px;
+    width: 198px;
+    height: 150px;
+}
+
+/*profile style*/
+.form-edit{
+    background-color: #ebebeb;
 }

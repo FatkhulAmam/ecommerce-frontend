@@ -12,6 +12,9 @@ import logo from '../assets/image/logo.svg'
 import cart from '../assets/image/shoppingCart.svg'
 import search from '../assets/image/Search.svg'
 import filter from '../assets/image/filter.svg'
+import mail from '../assets/image/mail.svg'
+import bell from '../assets/image/bell.svg'
+import user from '../assets/image/user.png'
 
 class NavSearchBar extends React.Component {
   constructor(props) {
@@ -44,15 +47,14 @@ class NavSearchBar extends React.Component {
               <NavItem className="mr-3">
                 <NavLink href="/cart"><img src={cart} alt="bell logo" /></NavLink>
               </NavItem>
-              <NavItem className="mr-">
-                <NavLink href="#">
-                  <Link to='/login'><Button className="btn-nav rounded-pill text-white">Login</Button></Link>
-                </NavLink>
+              <NavItem className="mr-3">
+                <NavLink href="/cart"><img src={bell} alt="bell logo" /></NavLink>
               </NavItem>
-              <NavItem>
-                <NavLink href="#">
-                  <Link to='/signup'><Button className="btn-nav rounded-pill text-white">Signup</Button></Link>
-                </NavLink>
+              <NavItem className="mr-3">
+                <NavLink href="/cart"><img src={mail} alt="bell logo" /></NavLink>
+              </NavItem>
+              <NavItem className="mr-3">
+                <NavLink href="/cart"><img className="rounded-circle" src={user} alt="bell logo" /></NavLink>
               </NavItem>
             </Nav>
           </Collapse>

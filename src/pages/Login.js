@@ -43,15 +43,15 @@ class login extends React.Component{
                         <img src={logo}/>
                         <FormText className="text-center mb-5 mt-4"><h6>Please Login with your account</h6></FormText>
                             <ButtonGroup className="col-sm-8">
-                                <Button className="btn btn-custommer" style={{width:100}}>custommer</Button>
-                                <Button className="btn btn-seller" style={{width:100}}>seller</Button>
+                                <Button className="btn-custommer" style={{width:100}}>custommer</Button>
+                                <Button className="btn-seller" style={{width:100}}>seller</Button>
                             </ButtonGroup>
                         <Input className="mt-5" onChange={this.onChangeText} name='email' type='email' placeholder="email" />
                         <Input className="mt-3" onChange={this.onChangeText} name='password' type='password' placeholder="password" />
                         <div className="text-right mb-4">
                             <Link to='/'>forgot password?</Link>
                         </div>
-                        <Button className="col-sm-12 col-12 mb-4" style={{width: 370}}>Sign Up</Button>
+                        <Button className="btn-auth col-sm-12 col-12 mb-4" style={{width: 370}}>login</Button>
                         <p>make a login blanja account<Link to='/signup'> sign up</Link></p>
                     </Form>
                 </Container>
