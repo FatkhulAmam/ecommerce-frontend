@@ -33,7 +33,6 @@
     width: 360px;
 }
 
-
 .btn-custommer, .btn-seller, .btn-auth{
     background-color: white;
     border-color: #00ff00;
@@ -56,6 +55,21 @@
     margin-bottom: -10px;
     width: 198px;
     height: 150px;
+}
+
+/*category detail style*/
+.btn-chat, .btn-add{
+    height: 40px;
+    width: 150px;
+    background-color: #fff;
+    color: #00ff00;
+    border-color: #00ff00;
+}
+.btn-buy-now{
+    width: 300px;
+    height: 40px;
+    background-color: #00ff00;
+    border-color: #00ff00;
 }
 
 /*profile style*/
