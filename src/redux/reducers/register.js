@@ -1,19 +1,18 @@
 const initialState = {
     isLogin: false,
     isError: false,
-    token: '',
     message: ''
 }
 
 export default (state = initialState, action) => {
     switch (action.type) {
-        case 'AUTH_USER_PENDING':{
+        case 'MAKE_ACCOUNT_PENDING':{
             return{
                 ...state,
                 isLoading: true
             }
         }
-        case 'AUTH_USER_REJECTED':{
+        case 'MAKE_ACCOUNT_REJECTED':{
             return{
                 ...state,
                 isLoading: false,
@@ -21,7 +20,7 @@ export default (state = initialState, action) => {
                 message: 'access denied'
             }
         }
-        case 'AUTH_USER_FULFILLED':{
+        case 'MAKE_ACCOUNT_FULFILLED':{
             return{
                 ...state,
                 isError: false,

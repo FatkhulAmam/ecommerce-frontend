@@ -46,8 +46,8 @@ class login extends React.Component{
                                 <Button className="btn-custommer" style={{width:100}}>custommer</Button>
                                 <Button className="btn-seller" style={{width:100}}>seller</Button>
                             </ButtonGroup>
-                        <Input className="mt-5" onChange={this.onChangeText} name='email' type='email' placeholder="email" />
-                        <Input className="mt-3" onChange={this.onChangeText} name='password' type='password' placeholder="password" />
+                        <Input className="mt-5" onChange={this.onChangeText} name="email" type="email" placeholder="email" />
+                        <Input className="mt-3" onChange={this.onChangeText} name="password" type="password" placeholder="password" />
                         <div className="text-right mb-4">
                             <Link to='/'>forgot password?</Link>
                         </div>

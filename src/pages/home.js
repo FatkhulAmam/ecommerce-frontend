@@ -30,20 +30,20 @@ class Product extends Component {
                     <CardImg className='default-img' src={bgProduct}/>
                     <CardBody>
                         <CardTitle><h5>{item.name}</h5></CardTitle>
+                        <CardSubtitle className="text-danger mb-2">{item.price}</CardSubtitle>
                         <CardSubtitle><h6>{item.category_name}</h6></CardSubtitle>
-                        <CardSubtitle>{item.price}</CardSubtitle>
                     </CardBody>
                 </Card>
             </Col>
         )})}
         </Row>
-        </Container>
         {isLoading&& !isError && (
           <div>Loading</div>
         )}
         {isError&& alertMsg!=='' && (
           <div>{alertMsg}</div>
         )}
+        </Container>
       </>
     )
   }
