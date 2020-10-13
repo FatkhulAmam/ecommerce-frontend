@@ -35,7 +35,9 @@ class App extends React.Component{
           <Route path="/category/product" render={()=><CategoryDetail/>}/>
           <Route path="/cart" render={()=><Cart/>}/>
           <Route path="/check_out" render={()=><CheckOut/>}/>
-          <Route path="/profile" render={()=><Profile />}/>
+          <PrivateRoot path='/profile'>
+            <Profile/>
+          </PrivateRoot>
           <Route path="/edit/:id" component={Edit}/>
         </Switch>
         </BrowserRouter>

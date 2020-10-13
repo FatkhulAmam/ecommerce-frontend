@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, {useEffect} from 'react'
+import {useSelector, useDispatch} from 'react-redux'
 import { Col, Input, Row, Media, Label, Button } from 'reactstrap'
 import { FaPencilAlt } from 'react-icons/fa'
 
@@ -6,7 +7,16 @@ import Navbar from '../component/NavProfileBar'
 //import style
 import '../assets/style/style.css'
 
+import profileAction from '../redux/actions/profile'
+
 export default function Profile() {
+    const token = useSelector(state=>state.auth.token)
+    const user = useSelector(state=>state.profile)
+    const dispatch = useDispatch()
+    useEffect(()=>{
+        console.log(profileAction.getProfile())
+        dispatch(profileAction.getProfile(token))
+    },[token])
     return (
         <React.Fragment>
             <Navbar />
@@ -38,7 +48,7 @@ export default function Profile() {
                                     </Col>
                                     <Col className="text-right" md={4}>Email</Col>
                                     <Col className="mb-3" md={8}>
-                                        <Input type="email" />
+                                        <Input type="email" value='amam' />
                                     </Col>
                                     <Col className="text-right" md={4}>Phone Number</Col>
                                     <Col className="mb-3" md={8}>
