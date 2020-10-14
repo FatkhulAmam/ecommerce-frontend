@@ -12,7 +12,7 @@ class login extends React.Component {
                 <div className="vh-100 d-flex">
                     <Container className="d-flex align-items-center justify-content-center">
                         <Form className="text-center col-sm-4 col-12">
-                            <img src={logo} />
+                            <img alt="brand logo" src={logo} />
                             <FormText className="text-center mb-5 mt-4"><h6>Please Sign up with your account</h6></FormText>
                             <ButtonGroup className="col-sm-8">
                                 <Button className="btn-custommer" style={{ width: 100 }}>custommer</Button>

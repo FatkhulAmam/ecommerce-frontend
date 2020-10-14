@@ -40,7 +40,7 @@ class login extends React.Component{
                 <Container className="d-flex align-items-center justify-content-center">
                     <Form onSubmit={this.login} className="text-center col-sm-4 col-12">
                     <Alert color={isError?'danger':'success'} isOpen={isError || message!==''}>{message}</Alert>
-                        <img src={logo}/>
+                        <img alt="brand-logo" src={logo}/>
                         <FormText className="text-center mb-5 mt-4"><h6>Please Login with your account</h6></FormText>
                             <ButtonGroup className="col-sm-8">
                                 <Button className="btn-custommer" style={{width:100}}>custommer</Button>

@@ -19,14 +19,14 @@ export default class Cart extends Component {
                                 <Card className='cart-check shadow-sm mt-3'>
                                     <CardBody className="ml-3">
                                         <Input type="checkbox" />
-                                        <p>Select All item<a href=""> delete</a></p>
+                                        <p>Select All item<a href="/cart"> delete</a></p>
                                     </CardBody>
                                 </Card>
                                 <Card className='shadow-sm mt-3'>
                                     <CardBody className="ml-4">
                                         <Row>
                                             <Input type="checkbox" />
-                                            <img className="img-cart" src={bgDefault} />
+                                            <img className="img-cart" src={bgDefault} alt="img-product" />
                                             <div>
                                                 <CardTitle>Nama Barang</CardTitle>
                                                 <CardSubtitle>nama toko</CardSubtitle>
@@ -42,7 +42,7 @@ export default class Cart extends Component {
                                     <CardBody className="ml-4">
                                         <Row>
                                             <Input type="checkbox" />
-                                            <img className="img-cart" src={bgDefault} />
+                                            <img className="img-cart" src={bgDefault} alt="img-product" />
                                             <div>
                                                 <CardTitle>Nama Barang</CardTitle>
                                                 <CardSubtitle>nama toko</CardSubtitle>

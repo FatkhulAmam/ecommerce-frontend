@@ -13,12 +13,12 @@ export default class CategoryDetail extends Component {
                     <Row>
                         <div className="product-img mt-4">
                             <div>
-                                <img className='one' src={bgDefault} />
-                                <img className='two ml-3' src={bgDefault} />
+                                <img className='one' src={bgDefault} alt="img product one" />
+                                <img className='two ml-3' src={bgDefault} alt="img product two" />
                             </div>
                             <div>
-                                <img className='three mt-3' src={bgDefault} />
-                                <img className='four ml-3 mt-3' src={bgDefault} />
+                                <img className='three mt-3' src={bgDefault} alt="img product three" />
+                                <img className='four ml-3 mt-3' src={bgDefault} alt="img product four" />
                             </div>
                         </div>
                         <div className="product-detail mt-4 ml-3">

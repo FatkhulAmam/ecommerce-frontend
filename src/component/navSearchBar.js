@@ -1,6 +1,6 @@
 import React from 'react'
 import {
-  Container, Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, Input, Form, Button, ButtonGroup, FormText
+  Container, Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, Input, Form, Button, ButtonGroup
 } from 'reactstrap'
 import { Link } from 'react-router-dom'
 
