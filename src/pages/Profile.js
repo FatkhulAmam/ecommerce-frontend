@@ -14,9 +14,9 @@ export default function Profile() {
     const user = useSelector(state=>state.profile)
     const dispatch = useDispatch()
     useEffect(()=>{
-        console.log(profileAction.getProfile())
+        console.log(user)
         dispatch(profileAction.getProfile(token))
-    },[token])
+    },[dispatch, token])
     return (
         <React.Fragment>
             <Navbar />
@@ -39,16 +39,17 @@ export default function Profile() {
                         <div className="heading h3">My profile</div>
                         <div className="text-muted small">manage your profile information</div>
                         <hr />
+                        {Object.keys(user.data).length&&(
                         <Row>
                             <Col md={8}>
                                 <Row>
                                     <Col className="text-right mt-3" md={4}>Name</Col>
                                     <Col className="mb-3 mt-2" md={8}>
-                                        <Input type="text" />
+                                        <Input type="text" value={user.data.user_name}/>
                                     </Col>
                                     <Col className="text-right" md={4}>Email</Col>
                                     <Col className="mb-3" md={8}>
-                                        <Input type="email" value='amam' />
+                                        <Input type="email"/>
                                     </Col>
                                     <Col className="text-right" md={4}>Phone Number</Col>
                                     <Col className="mb-3" md={8}>
@@ -88,6 +89,7 @@ export default function Profile() {
                                 </Media>
                             </Col>
                         </Row>
+                        )}
                     </div>
                 </div>
             </div>

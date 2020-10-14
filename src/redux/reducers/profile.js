@@ -1,6 +1,6 @@
 const initialState = {
     data: {},
-    isLogin: false,
+    isLoading: false,
     isError: false,
     message: ''
 }
@@ -24,8 +24,7 @@ export default (state = initialState, action) => {
         case 'GET_PROFILE_FULFILLED':{
             return{
                 ...state,
-                data: action.payload.data,
-                isLogin:true,
+                data: action.payload.data.data,
                 isLoading:false
             }
         }
