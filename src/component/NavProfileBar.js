@@ -2,6 +2,7 @@ import React from 'react'
 import {
   Container, Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink, Input, Form, Button, ButtonGroup
 } from 'reactstrap'
+import {Link} from 'react-router-dom'
 
 // import style
 import '../assets/style/style.css'
@@ -44,16 +45,16 @@ class NavSearchBar extends React.Component {
           <Collapse navbar isOpen={this.state.navbarOpen} >
             <Nav navbar className="ml-auto">
               <NavItem className="mr-3">
-                <NavLink href="/cart"><img src={cart} alt="bell logo" /></NavLink>
+                <Link to="/cart"><img src={cart} alt="bell logo" /></Link>
               </NavItem>
               <NavItem className="mr-3">
-                <NavLink href="/cart"><img src={bell} alt="bell logo" /></NavLink>
+                <Link to="#"><img src={bell} alt="bell logo" /></Link>
               </NavItem>
               <NavItem className="mr-3">
-                <NavLink href="/cart"><img src={mail} alt="bell logo" /></NavLink>
+                <Link to="/cart"><img src={mail} alt="bell logo" /></Link>
               </NavItem>
               <NavItem className="mr-3">
-                <NavLink href="/cart"><img className="rounded-circle" src={user} alt="bell logo" /></NavLink>
+                <Link to="/profile"><img className="rounded-circle" src={user} alt="bell logo" /></Link>
               </NavItem>
             </Nav>
           </Collapse>

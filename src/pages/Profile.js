@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import { Col, Input, Row, Media, Label, Button } from 'reactstrap'
 import { FaPencilAlt } from 'react-icons/fa'
@@ -10,13 +10,29 @@ import '../assets/style/style.css'
 import profileAction from '../redux/actions/profile'
 
 export default function Profile() {
+    const [user_name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [phone, setPhone] = useState('');
+    const [gender, setGender] = useState('');
+    const [birth, setBirth] = useState('');
     const token = useSelector(state=>state.auth.token)
-    const user = useSelector(state=>state.profile)
+    const { data } = useSelector((state) => state.profile);
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        if (data.length) {
+            setName(data[0].user_name)
+            setEmail(data[0].email)
+            setPhone(data[0].phone)
+            setGender(data[0].gender)
+            setBirth(data[0].birth)
+        }
+    }, [data])
+
     useEffect(()=>{
-        console.log(user)
         dispatch(profileAction.getProfile(token))
     },[dispatch, token])
+
     return (
         <React.Fragment>
             <Navbar />
@@ -39,31 +55,30 @@ export default function Profile() {
                         <div className="heading h3">My profile</div>
                         <div className="text-muted small">manage your profile information</div>
                         <hr />
-                        {Object.keys(user.data).length&&(
                         <Row>
                             <Col md={8}>
                                 <Row>
                                     <Col className="text-right mt-3" md={4}>Name</Col>
                                     <Col className="mb-3 mt-2" md={8}>
-                                        <Input type="text" value={user.data.user_name}/>
+                                        <Input type="text" value={user_name}/>
                                     </Col>
                                     <Col className="text-right" md={4}>Email</Col>
                                     <Col className="mb-3" md={8}>
-                                        <Input type="email"/>
+                                        <Input type="email" value={email}/>
                                     </Col>
                                     <Col className="text-right" md={4}>Phone Number</Col>
                                     <Col className="mb-3" md={8}>
-                                        <Input type="number" />
+                                        <Input type="number" value={phone}/>
                                     </Col>
                                     <Col className="text-right" md={4}>Gender</Col>
                                     <Col className="mb-3" md={8}>
                                         <div className="pl-3">
                                             <Label>
-                                                <Input type="radio" />
+                                                <Input type="radio" value={gender}/>
                                                 <span>Male</span>
                                             </Label>
                                             <Label className="ml-5">
-                                                <Input type="radio" />
+                                                <Input type="radio" value={gender}/>
                                                 <span>Female</span>
                                             </Label>
                                         </div>
@@ -89,7 +104,6 @@ export default function Profile() {
                                 </Media>
                             </Col>
                         </Row>
-                        )}
                     </div>
                 </div>
             </div>
