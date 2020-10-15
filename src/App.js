@@ -1,6 +1,5 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
-import {Provider} from 'react-redux'
 
 // import private root
 import PrivateRoot from './component/privateRoute'
@@ -20,12 +19,15 @@ import Profile from './pages/Profile'
 //importing page seller
 import Edit from './pages/edit'
 
-import store from './redux/store'
-
 class App extends React.Component{
+  componentDidMount() {
+    if (localStorage.getItem('token')) {
+      this.props.setToken(localStorage.getItem('token'));
+    }
+  }
+
   render(){
     return(
-      <Provider store={store}>
         <BrowserRouter>
         <Switch>
           <Route path="/" component={Home} exact />
@@ -41,7 +43,6 @@ class App extends React.Component{
           <Route path="/edit/:id" component={Edit}/>
         </Switch>
         </BrowserRouter>
-      </Provider>
     )
   }
 }
