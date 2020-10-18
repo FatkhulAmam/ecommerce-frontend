@@ -1,5 +1,5 @@
 const initialState = {
-    isLogin: false,
+    isRegister: false,
     isError: false,
     message: ''
 }
@@ -24,7 +24,7 @@ export default (state = initialState, action) => {
             return{
                 ...state,
                 isError: false,
-                isLogin: true,
+                isRegister: true,
                 isLoading:false,
                 message: 'register success'
             }
