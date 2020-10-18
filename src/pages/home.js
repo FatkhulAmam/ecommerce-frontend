@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import Carousel from 'react-elastic-carousel'
 import Navbar from '../component/NavSearchBar'
 import '../assets/style/style.css'
 import { 
@@ -9,7 +10,17 @@ import {
 } from 'reactstrap'
 import bgProduct from '../assets/image/bgProduct.png'
 
+// import redux
 import productAction from '../redux/actions/product'
+
+// import asset image
+import carousel1 from '../assets/image/corou1.png'
+import carousel2 from '../assets/image/corou2.png'
+
+const breakPoints = [
+  { width: 1, itemsToShow: 1 },
+  { width: 1200, itemsToShow: 2 },
+]
 
 class Product extends Component {
   componentDidMount() {
@@ -20,8 +31,21 @@ class Product extends Component {
     return (
       <>
         <Navbar />
+        <div className="mt-3">
+          <Carousel breakPoints={breakPoints}>
+            <img src={carousel1} alt="caroucel one"/>
+            <img src={carousel2} alt="caroucel two"/>
+            <img src={carousel1} alt="caroucel three"/>
+            <img src={carousel2} alt="caroucel four"/>
+            <img src={carousel1} alt="caroucel five"/>
+            <img src={carousel2} alt="caroucel six"/>
+          </Carousel>
+        </div>
         <Container className="mt-4">
+        <div className="h3">Category</div>
+        <span className="text-secondary small">what are you curently looking for</span>
         <h3>New</h3>
+        <span className="text-secondary small">you never seem it before</span>
         <Row>
         {!isLoading && !isError && data.length!==0 && data.map(item=>{
             return(
