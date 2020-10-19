@@ -28,7 +28,7 @@ class login extends React.Component{
     }
     componentDidUpdate(){
         if(this.props.auth.isLogin){
-          this.props.history.push('/')
+          this.props.history.push('/profile')
         }
     }
 

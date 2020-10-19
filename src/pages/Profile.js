@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { Col, Input, Row, Media, Label, Button } from 'reactstrap'
+import { Col, Input, Row, Media, Label, Button, Nav, NavItem } from 'reactstrap'
+import { Link } from 'react-router-dom'
 import { FaPencilAlt } from 'react-icons/fa'
 
 import Navbar from '../component/NavProfileBar'
@@ -20,7 +21,7 @@ export default function Profile() {
     const [phone, setPhone] = useState('');
     const [gender, setGender] = useState('');
     const [birth, setBirth] = useState('');
-    const uploadFile = React.useRef()
+    // const uploadFile = React.useRef()
 
     useEffect(() => {
         if (data.length) {
@@ -41,17 +42,43 @@ export default function Profile() {
             <Navbar />
             <div className="d-flex">
                 <div className="sidebar">
-                    <Media className="align-items-center">
+                <div className="justify-content-center">
+                    <Media>
                         <Media left>
                             <Media className="rounded-circle m-3" object src="https://via.placeholder.com/50" />
                         </Media>
                         <Media body>
-                            <div className="strong">
+                            <div className="strong mt-3">
                                 Media heading
                             </div>
                             <div className="text-muted small"><FaPencilAlt />Edit profile</div>
                         </Media>
                     </Media>
+                    <Nav vertical className="pl-3">
+                        <NavItem>
+                            <Media className="align-items-center">
+                                <Media left>
+                                    <Media className="rounded-circle" object src="https://via.placeholder.com/25" />
+                                </Media>
+                                <Media body className="ml-2">
+                                    <Link to="/profile">edit profile</Link>
+                                </Media>
+                            </Media>
+                        </NavItem>
+                    </Nav>
+                    <Nav vertical className="pl-3">
+                        <NavItem>
+                            <Media className="align-items-center">
+                                <Media left>
+                                    <Media className="rounded-circle" object src="https://via.placeholder.com/25" />
+                                </Media>
+                                <Media body className="ml-2">
+                                    <Link to="/address">address</Link>
+                                </Media>
+                            </Media>
+                        </NavItem>
+                    </Nav>
+                    </div>
                 </div>
                 <div className="d-flex content p-5" sm="9">
                     <div className="profile-edit shadow p-3">

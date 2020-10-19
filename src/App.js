@@ -15,6 +15,7 @@ import CategoryDetail from './pages/CategoryDetail'
 import Cart from './pages/Cart'
 import CheckOut from './pages/CheckOut'
 import Profile from './pages/Profile'
+import Address from './pages/userAddress'
 
 //importing page seller
 import MyProduct from './pages/MyProduct'
@@ -39,9 +40,12 @@ class App extends React.Component{
           <Route path="/category/product" render={()=><CategoryDetail/>}/>
           <Route path="/cart" render={()=><Cart/>}/>
           <Route path="/check_out" render={()=><CheckOut/>}/>
-          <PrivateRoot path='/profile'>
+
+          // path for loged user
+          <PrivateRoot path='/profile' exact>
             <Profile/>
           </PrivateRoot>
+          <Route path="/user/address" render={()=><Address/>}/>
 
           // path for seller
           <Route path="/my_product" component={MyProduct} />
