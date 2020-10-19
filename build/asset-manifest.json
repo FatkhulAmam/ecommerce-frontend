@@ -1,0 +1,33 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d0416b92.chunk.css",
+    "main.js": "/static/js/main.a5331a2f.chunk.js",
+    "main.js.map": "/static/js/main.a5331a2f.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.fc30dc24.js",
+    "runtime-main.js.map": "/static/js/runtime-main.fc30dc24.js.map",
+    "static/css/2.d9ad5f5c.chunk.css": "/static/css/2.d9ad5f5c.chunk.css",
+    "static/js/2.729408a9.chunk.js": "/static/js/2.729408a9.chunk.js",
+    "static/js/2.729408a9.chunk.js.map": "/static/js/2.729408a9.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.7668d209d6326bffbf908f4f2a7e94ed.js": "/precache-manifest.7668d209d6326bffbf908f4f2a7e94ed.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.d9ad5f5c.chunk.css.map": "/static/css/2.d9ad5f5c.chunk.css.map",
+    "static/css/main.d0416b92.chunk.css.map": "/static/css/main.d0416b92.chunk.css.map",
+    "static/js/2.729408a9.chunk.js.LICENSE.txt": "/static/js/2.729408a9.chunk.js.LICENSE.txt",
+    "static/media/Search.svg": "/static/media/Search.3a6a1e65.svg",
+    "static/media/bell.svg": "/static/media/bell.87754cec.svg",
+    "static/media/corou1.png": "/static/media/corou1.94385918.png",
+    "static/media/corou2.png": "/static/media/corou2.542fcee2.png",
+    "static/media/filter.svg": "/static/media/filter.a6c8d9b5.svg",
+    "static/media/logo.svg": "/static/media/logo.b89a0859.svg",
+    "static/media/mail.svg": "/static/media/mail.d503db41.svg",
+    "static/media/shoppingCart.svg": "/static/media/shoppingCart.2a2dfc5f.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fc30dc24.js",
+    "static/css/2.d9ad5f5c.chunk.css",
+    "static/js/2.729408a9.chunk.js",
+    "static/css/main.d0416b92.chunk.css",
+    "static/js/main.a5331a2f.chunk.js"
+  ]
+}
