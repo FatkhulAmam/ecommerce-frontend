@@ -18,6 +18,7 @@ import Profile from './pages/Profile'
 
 //importing page seller
 import MyProduct from './pages/MyProduct'
+import addProduct from './pages/addProduct'
 import Edit from './pages/edit'
 
 class App extends React.Component{
@@ -44,6 +45,7 @@ class App extends React.Component{
 
           // path for seller
           <Route path="/my_product" component={MyProduct} />
+          <Route path="/add_product" component={addProduct} />
           <Route path="/edit/:id" component={Edit}/>
         </Switch>
         </BrowserRouter>
