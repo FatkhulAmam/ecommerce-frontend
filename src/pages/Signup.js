@@ -33,7 +33,10 @@ class Register extends React.Component {
   onChangeText = (e) => {
     this.setState({ [e.target.name]: e.target.value })
   }
-
+  componentDidMount() {
+    console.log(this.props.registerData);
+  }
+  
   componentDidUpdate() {
     if (this.props.registerData.isRegister) {
       this.props.history.push('/login')
