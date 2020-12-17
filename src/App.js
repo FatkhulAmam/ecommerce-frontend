@@ -5,7 +5,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import PrivateRoot from "./component/privateRoute";
 
 // importing page public
-import Home from "./pages/home";
+import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import ProductDetail from "./pages/DetailProduct";
@@ -15,12 +15,12 @@ import CategoryDetail from "./pages/CategoryDetail";
 import Cart from "./pages/Cart";
 import CheckOut from "./pages/CheckOut";
 import Profile from "./pages/Profile";
-import Address from "./pages/userAddress";
+import Address from "./pages/UserAddress";
 
 //importing page seller
 import MyProduct from "./pages/MyProduct";
-import addProduct from "./pages/addProduct";
-import Edit from "./pages/edit";
+import AddProduct from "./pages/AddProduct";
+import Edit from "./pages/Edit";
 
 class App extends React.Component {
   componentDidMount() {
@@ -47,7 +47,7 @@ class App extends React.Component {
           <Route path="/user/address" render={() => <Address />} />
           // path for seller
           <Route path="/my_product" component={MyProduct} />
-          <Route path="/add_product" component={addProduct} />
+          <Route path="/add_product" component={AddProduct} />
           <Route path="/edit/:id" component={Edit} />
         </Switch>
       </BrowserRouter>

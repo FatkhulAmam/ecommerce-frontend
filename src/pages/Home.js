@@ -27,7 +27,7 @@ const breakPoints = [
   { width: 1200, itemsToShow: 2 },
 ];
 
-class Product extends Component {
+class Home extends Component {
   componentDidMount() {
     this.props.getProduct();
   }
@@ -61,7 +61,7 @@ class Product extends Component {
                 return (
                   <Col className="mt-4">
                     <Card className="card-home shadow-sm">
-                      <CardImg className="default-img" src={bgProduct} />
+                      <CardImg className="default-img" src={item.url} />
                       <CardBody>
                         <CardTitle>
                           <h5>{item.name}</h5>
@@ -92,6 +92,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   getProduct: productAction.getData,
+  searchAction: productAction.searchData,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Product);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

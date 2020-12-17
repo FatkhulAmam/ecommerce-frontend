@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import Navbar from "../component/NavProfileBar";
+import React from "react";
+import Navbar from "../component/NavigationBar";
 import axios from "axios";
 import qs from "querystring";
 import {
@@ -13,7 +13,7 @@ import {
   Input,
 } from "reactstrap";
 
-export default class addProduct extends Component {
+class Edit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,6 +25,19 @@ export default class addProduct extends Component {
     };
   }
 
+  componentDidMount = async () => {
+    const id = this.props.match.params.id;
+    const res = await axios.get(`http://localhost:8180/product/${id}`);
+
+    this.setState({
+      id: res.data.data.id,
+      name: res.data.data.name,
+      price: res.data.data.price,
+      category: res.data.data.category,
+      description: res.data.data.description,
+    });
+  };
+
   handlerChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
@@ -33,8 +46,8 @@ export default class addProduct extends Component {
 
   handlerSubmit = async (event) => {
     event.preventDefault();
-    await axios.post(
-      `http://localhost:8180/product/`,
+    await axios.put(
+      `http://localhost:8180/product/${this.state.id}`,
       qs.stringify({
         name: this.state.name,
         price: this.state.price,
@@ -46,6 +59,7 @@ export default class addProduct extends Component {
   };
 
   render() {
+    const { name, price, category, description } = this.state;
     return (
       <React.Fragment>
         <Navbar />
@@ -64,6 +78,7 @@ export default class addProduct extends Component {
                         type="text"
                         name="name"
                         id="input-name"
+                        value={name}
                         onChange={this.handlerChange}
                       ></Input>
                     </Col>
@@ -77,6 +92,7 @@ export default class addProduct extends Component {
                         type="number"
                         name="price"
                         id="input-price"
+                        value={price}
                         onChange={this.handlerChange}
                       ></Input>
                     </Col>
@@ -90,6 +106,7 @@ export default class addProduct extends Component {
                         type="select"
                         name="category"
                         id="category"
+                        value={category}
                         onChange={this.handlerChange}
                       >
                         <option>1</option>
@@ -108,6 +125,7 @@ export default class addProduct extends Component {
                         type="textarea"
                         name="description"
                         id="desc"
+                        value={description}
                         onChange={this.handlerChange}
                       ></Input>
                     </Col>
@@ -117,9 +135,9 @@ export default class addProduct extends Component {
                     <Col md={2}>
                       <Input
                         type="submit"
-                        value="add"
+                        value="edit"
                         className="btn btn-success"
-                      ></Input>
+                      />
                     </Col>
                   </FormGroup>
                 </Form>
@@ -131,3 +149,5 @@ export default class addProduct extends Component {
     );
   }
 }
+
+export default Edit;

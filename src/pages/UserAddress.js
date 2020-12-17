@@ -20,7 +20,7 @@ import "../assets/style/style.css";
 
 import profileAction from "../redux/actions/profile";
 
-export default function Profile() {
+export default function Address() {
   const token = useSelector((state) => state.auth.token);
   const { data } = useSelector((state) => state.profile);
   const dispatch = useDispatch();
