@@ -1,10 +1,17 @@
-import React, { Component } from 'react';
-import Navbar from '../component/NavProfileBar';
+import React, { Component } from "react";
+import Navbar from "../component/NavProfileBar";
 import {
-  Container, Card, CardTitle, CardSubtitle, CardBody, Button, Row, Input,
-} from 'reactstrap';
+  Container,
+  Card,
+  CardTitle,
+  CardSubtitle,
+  CardBody,
+  Button,
+  Row,
+  Input,
+} from "reactstrap";
 
-import bgDefault from '../assets/image/bgProduct.png';
+import bgDefault from "../assets/image/bgProduct.png";
 
 export default class CheckOut extends Component {
   constructor(props) {
@@ -34,7 +41,11 @@ export default class CheckOut extends Component {
                   <CardBody className="ml-4">
                     <Row>
                       <Input type="checkbox" />
-                      <img className="img-cart" src={bgDefault} alt="img-product" />
+                      <img
+                        className="img-cart"
+                        src={bgDefault}
+                        alt="img-product"
+                      />
                       <div>
                         <CardTitle>Nama Barang</CardTitle>
                         <CardSubtitle>nama toko</CardSubtitle>
@@ -50,7 +61,11 @@ export default class CheckOut extends Component {
                   <CardBody className="ml-4">
                     <Row>
                       <Input type="checkbox" />
-                      <img className="img-cart" src={bgDefault} alt="img-product" />
+                      <img
+                        className="img-cart"
+                        src={bgDefault}
+                        alt="img-product"
+                      />
                       <div>
                         <CardTitle>Nama Barang</CardTitle>
                         <CardSubtitle>nama toko</CardSubtitle>
