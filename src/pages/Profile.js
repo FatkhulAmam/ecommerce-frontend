@@ -20,7 +20,6 @@ import "../assets/style/style.css";
 import profileAction from "../redux/actions/profile";
 
 export default function Profile() {
-  const token = useSelector((state) => state.auth.token);
   const { data } = useSelector((state) => state.profile);
   const dispatch = useDispatch();
 
@@ -40,9 +39,10 @@ export default function Profile() {
       setBirth(data[0].birth);
     }
   }, [data]);
-
+  const token = localStorage.getItem('token')
   useEffect(() => {
     dispatch(profileAction.getProfile(token));
+    console.log(token);
   }, [dispatch, token]);
 
   return (

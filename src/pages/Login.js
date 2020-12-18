@@ -22,14 +22,15 @@ class login extends React.Component {
     email: "",
     password: "",
   };
-  login = (e) => {
+  login = async (e) => {
     e.preventDefault();
     const { email, password } = this.state;
     const data = {
       email,
       password,
     };
-    this.props.login(data);
+    await this.props.login(data);
+    localStorage.setItem('token', this.props.auth.token)
   };
   onChangeText = (e) => {
     this.setState({ [e.target.name]: e.target.value });

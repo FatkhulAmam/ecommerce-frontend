@@ -69,13 +69,13 @@ class Home extends Component {
                         />
                         <CardBody>
                           <CardTitle>
-                            <h5>{item.name}</h5>
+                            <h5 className="product_name">{item.name}</h5>
                           </CardTitle>
                           <CardSubtitle className="text-danger mb-2">
                             {item.price}
                           </CardSubtitle>
                           <CardSubtitle>
-                            <h6>{item.category_name}</h6>
+                            <h6 className="product_name">{item.category_name}</h6>
                           </CardSubtitle>
                         </CardBody>
                       </Card>

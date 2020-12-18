@@ -10,7 +10,11 @@ export default {
     payload: http().get(`product?search[name]=${keyword}`),
   }),
   getDetailById: (id) => ({
-    type: "GET_DATA",
+    type: "DATA_ID",
     payload: http().get(`product/${id}`),
+  }),
+  getCart: (token) => ({
+    type: "GET_CART",
+    payload: http(token).get('cart'),
   }),
 };

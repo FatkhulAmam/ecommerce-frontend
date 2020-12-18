@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import {useSelector} from 'react-redux'
 
 // import private root
 import PrivateRoot from "./component/privateRoute";
@@ -22,35 +23,32 @@ import MyProduct from "./pages/MyProduct";
 import AddProduct from "./pages/AddProduct";
 import Edit from "./pages/Edit";
 
-class App extends React.Component {
-  componentDidMount() {
-    if (localStorage.getItem("token")) {
-      this.props.setToken(localStorage.getItem("token"));
-    }
-  }
+const App = () => {
+  const auth = useSelector(state => state.auth)
 
-  render() {
-    return (
-      <BrowserRouter>
-        <Switch>
-          <Route path="/" component={Home} exact />
-          <Route path="/signup" component={Signup} />
-          <Route path="/login" render={(props) => <Login {...props} />} />
-          <Route path="/product/:id" render={(props) => <ProductDetail {...props}/>} />
-          <Route path="/category/product" render={() => <CategoryDetail />} />
-          <Route path="/cart" render={() => <Cart />} />
-          <Route path="/check_out" render={() => <CheckOut />} />
-          <PrivateRoot path="/profile" exact>
-            <Profile />
-          </PrivateRoot>
-          <Route path="/user/address" render={() => <Address />} />
-          <Route path="/my_product" component={MyProduct} />
-          <Route path="/add_product" component={AddProduct} />
-          <Route path="/edit/:id" component={Edit} />
-        </Switch>
-      </BrowserRouter>
-    );
-  }
-}
+  return (
+    <BrowserRouter>
+      <Switch>
+        <Route path="/" component={Home} exact />
+        <Route path="/signup" component={Signup} />
+        <Route path="/login" render={(props) => <Login {...props} />} />
+        <Route
+          path="/product/:id"
+          render={(props) => <ProductDetail {...props} />}
+        />
+        <Route path="/category/product" render={() => <CategoryDetail />} />
+        <Route path="/cart" render={() => <Cart />} />
+        <Route path="/check_out" render={() => <CheckOut />} />
+        <PrivateRoot path="/profile" exact>
+          <Profile />
+        </PrivateRoot>
+        <Route path="/user/address" render={() => <Address />} />
+        <Route path="/my_product" component={MyProduct} />
+        <Route path="/add_product" component={AddProduct} />
+        <Route path="/edit/:id" component={Edit} />
+      </Switch>
+    </BrowserRouter>
+  );
+};
 
 export default App;

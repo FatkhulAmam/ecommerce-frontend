@@ -22,7 +22,7 @@ class CategoryDetail extends Component {
 
   render() {
     const url = "http://localhost:8180/";
-    const {data} = this.props.product
+    const {dataDetail} = this.props.product
     return (
       <>
         <Navbar />
@@ -30,7 +30,7 @@ class CategoryDetail extends Component {
           <Row>
             <div className="product-img mt-4">
               <div>
-                <img className="one" src={`${url}${data.url}`} alt="img product one" />
+                <img className="one" src={`${url}${dataDetail.url}`} alt="img product one" />
                 <img
                   className="two ml-3"
                   src={bgDefault}
@@ -45,17 +45,17 @@ class CategoryDetail extends Component {
                 />
                 <img
                   className="four ml-3 mt-3"
-                  src={`${url}${data.url}`}
+                  src={`${url}${dataDetail.url}`}
                   alt="img product four"
                 />
               </div>
             </div>
             <div className="product-detail mt-4 ml-3">
-              <h2>{data.name}</h2>
+              <h2>{dataDetail.name}</h2>
               <p>toko</p>
               <p>rating</p>
               <p>harga</p>
-              <h3>{data.price}</h3>
+              <h3>{dataDetail.price}</h3>
               <p>color</p>
               <Row className="ml-2">
                 <h3>size </h3>
@@ -76,7 +76,7 @@ class CategoryDetail extends Component {
           <h5 className="mt-5">condition</h5>
           <h5 className="text-danger">New</h5>
           <h4 className="mt-4">description</h4>
-          <p>{data.description}</p>
+          <p>{dataDetail.description}</p>
           <h4>Product Review</h4>
           <hr />
           <h4>You can also like this</h4>
