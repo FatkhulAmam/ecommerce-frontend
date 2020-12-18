@@ -1,12 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import {
-  Col,
-  Input,
-  Row,
   Media,
-  Label,
-  Button,
   Nav,
   NavItem,
   Card,
@@ -22,25 +17,7 @@ import profileAction from "../redux/actions/profile";
 
 export default function Address() {
   const token = useSelector((state) => state.auth.token);
-  const { data } = useSelector((state) => state.profile);
   const dispatch = useDispatch();
-
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [gender, setGender] = useState("");
-  const [birth, setBirth] = useState("");
-  // const uploadFile = React.useRef()
-
-  useEffect(() => {
-    if (data.length) {
-      setName(data[0].user_name);
-      setEmail(data[0].email);
-      setPhone(data[0].phone);
-      setGender(data[0].gender);
-      setBirth(data[0].birth);
-    }
-  }, [data]);
 
   useEffect(() => {
     dispatch(profileAction.getProfile(token));

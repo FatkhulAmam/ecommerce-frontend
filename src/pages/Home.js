@@ -13,7 +13,7 @@ import {
   CardSubtitle,
   CardImg,
 } from "reactstrap";
-import bgProduct from "../assets/image/bgProduct.png";
+import {Link} from 'react-router-dom'
 
 // import redux
 import productAction from "../redux/actions/product";
@@ -32,6 +32,7 @@ class Home extends Component {
     this.props.getProduct();
   }
   render() {
+    const url = "http://localhost:8180/";
     const { isLoading, data, isError, alertMsg } = this.props.product;
     return (
       <>
@@ -59,22 +60,27 @@ class Home extends Component {
               data.length !== 0 &&
               data.map((item) => {
                 return (
-                  <Col className="mt-4">
-                    <Card className="card-home shadow-sm">
-                      <CardImg className="default-img" src={item.url} />
-                      <CardBody>
-                        <CardTitle>
-                          <h5>{item.name}</h5>
-                        </CardTitle>
-                        <CardSubtitle className="text-danger mb-2">
-                          {item.price}
-                        </CardSubtitle>
-                        <CardSubtitle>
-                          <h6>{item.category_name}</h6>
-                        </CardSubtitle>
-                      </CardBody>
-                    </Card>
-                  </Col>
+                  <Link to={`/product/${item.id}`}>
+                    <Col className="mt-4">
+                      <Card className="card-home shadow-sm">
+                        <CardImg
+                          className="default-img"
+                          src={`${url}${item.url}`}
+                        />
+                        <CardBody>
+                          <CardTitle>
+                            <h5>{item.name}</h5>
+                          </CardTitle>
+                          <CardSubtitle className="text-danger mb-2">
+                            {item.price}
+                          </CardSubtitle>
+                          <CardSubtitle>
+                            <h6>{item.category_name}</h6>
+                          </CardSubtitle>
+                        </CardBody>
+                      </Card>
+                    </Col>
+                  </Link>
                 );
               })}
           </Row>
@@ -93,6 +99,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = {
   getProduct: productAction.getData,
   searchAction: productAction.searchData,
+  getDetail: productAction.getDetailById,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

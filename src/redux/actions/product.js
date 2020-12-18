@@ -1,5 +1,4 @@
 import http from "../../helpers/http";
-import qs from "querystring";
 
 export default {
   getData: () => ({
@@ -9,5 +8,9 @@ export default {
   searchData: (keyword) => ({
     type: "GET_DATA",
     payload: http().get(`product?search[name]=${keyword}`),
+  }),
+  getDetailById: (id) => ({
+    type: "GET_DATA",
+    payload: http().get(`product/${id}`),
   }),
 };

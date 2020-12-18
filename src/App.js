@@ -36,16 +36,14 @@ class App extends React.Component {
           <Route path="/" component={Home} exact />
           <Route path="/signup" component={Signup} />
           <Route path="/login" render={(props) => <Login {...props} />} />
-          <Route path="/detail/product" render={() => <ProductDetail />} />
+          <Route path="/product/:id" render={(props) => <ProductDetail {...props}/>} />
           <Route path="/category/product" render={() => <CategoryDetail />} />
           <Route path="/cart" render={() => <Cart />} />
           <Route path="/check_out" render={() => <CheckOut />} />
-          // path for loged user
           <PrivateRoot path="/profile" exact>
             <Profile />
           </PrivateRoot>
           <Route path="/user/address" render={() => <Address />} />
-          // path for seller
           <Route path="/my_product" component={MyProduct} />
           <Route path="/add_product" component={AddProduct} />
           <Route path="/edit/:id" component={Edit} />

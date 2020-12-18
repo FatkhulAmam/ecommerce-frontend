@@ -1,16 +1,28 @@
 import React, { Component } from "react";
 import { Container, Row, Button } from "reactstrap";
+import { connect } from "react-redux";
 import Navbar from "../component/NavSearchBar";
+import {Link} from 'react-router-dom'
 
 import bgDefault from "../assets/image/bgProduct.png";
 
-export default class CategoryDetail extends Component {
+// import redux
+import productAction from "../redux/actions/product";
+class CategoryDetail extends Component {
   constructor(props) {
     super(props);
     this.state = {};
   }
 
+  componentDidMount() {
+    const id = this.props.match.params.id
+    this.props.getDetail(id)
+  }
+  
+
   render() {
+    const url = "http://localhost:8180/";
+    const {data} = this.props.product
     return (
       <>
         <Navbar />
@@ -18,7 +30,7 @@ export default class CategoryDetail extends Component {
           <Row>
             <div className="product-img mt-4">
               <div>
-                <img className="one" src={bgDefault} alt="img product one" />
+                <img className="one" src={`${url}${data.url}`} alt="img product one" />
                 <img
                   className="two ml-3"
                   src={bgDefault}
@@ -33,17 +45,17 @@ export default class CategoryDetail extends Component {
                 />
                 <img
                   className="four ml-3 mt-3"
-                  src={bgDefault}
+                  src={`${url}${data.url}`}
                   alt="img product four"
                 />
               </div>
             </div>
             <div className="product-detail mt-4 ml-3">
-              <h2>Name Product</h2>
+              <h2>{data.name}</h2>
               <p>toko</p>
               <p>rating</p>
               <p>harga</p>
-              <h3>nominal</h3>
+              <h3>{data.price}</h3>
               <p>color</p>
               <Row className="ml-2">
                 <h3>size </h3>
@@ -51,7 +63,7 @@ export default class CategoryDetail extends Component {
               </Row>
               <Row>
                 <Button className="btn-chat rounded-pill ml-2">chat</Button>
-                <Button className="btn-add rounded-pill ml-2">
+                <Button href='/cart' className="btn-add rounded-pill ml-2">
                   add to cart
                 </Button>
                 <Button className="btn-buy-now rounded-pill ml-2">
@@ -64,31 +76,7 @@ export default class CategoryDetail extends Component {
           <h5 className="mt-5">condition</h5>
           <h5 className="text-danger">New</h5>
           <h4 className="mt-4">description</h4>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry&apos;s standard dummy
-            text ever since the 1500s, when an unknown printer took a galley of
-            type and scrambled it to make a type specimen book. It has survived
-            not only five centuries, but also the leap into electronic
-            typesetting, remaining essentially unchanged. It was popularised in
-            the 1960s with the release of Letraset sheets containing Lorem Ipsum
-            passages, and more recently with desktop publishing software like
-            Aldus PageMaker including versions of Lorem Ipsum.
-          </p>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. It was popularised in the 1960s with the release of
-            Letraset sheets containing Lorem Ipsum passages, and more recently
-            with desktop publishing software like Aldus PageMaker including
-            versions of Lorem Ipsum.
-          </p>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry&apos;s standard dummy
-            text ever since the 1500s, when an unknown printer took a galley of
-            type and scrambled it to make a type specimen book. It has survived
-            not only five centuries.
-          </p>
+          <p>{data.description}</p>
           <h4>Product Review</h4>
           <hr />
           <h4>You can also like this</h4>
@@ -97,3 +85,12 @@ export default class CategoryDetail extends Component {
     );
   }
 }
+const mapStateToProps = (state) => ({
+  product: state.product,
+});
+
+const mapDispatchToProps = {
+  getDetail: productAction.getDetailById,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryDetail)

@@ -58,6 +58,14 @@
 }
 
 /*category detail style*/
+.one{
+  width: 200px;
+  height: 200px;
+}
+.four{
+  width: 200px;
+  height: 200px;
+}
 .btn-chat, .btn-add{
     height: 40px;
     width: 150px;
