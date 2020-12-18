@@ -17,4 +17,12 @@ export default {
     type: "GET_CART",
     payload: http(token).get('cart'),
   }),
+  getCategory: () => ({
+    type: "GET_CATEGORY",
+    payload: http().get('category'),
+  }),
+  getCategoryDetail: (id) => ({
+    type: "CATEGORY_PRODUCT",
+    payload: http().get(`product?search[category]=${id}`),
+  }),
 };

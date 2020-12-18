@@ -2,6 +2,8 @@ const initialState = {
   data: [],
   dataDetail: [],
   dataCart: [],
+  dataCategory: [],
+  categoryProduct: [],
   isLoading: false,
   isError: false,
   alertMsg: "",
@@ -72,6 +74,50 @@ export default (state = initialState, action) => {
         ...state,
         isLoading: false,
         dataCart: action.payload.data.data,
+      };
+    }
+    // get category
+    case "GET_CATEGORY_PENDING": {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+    case "GET_CATEGORY_REJECTED": {
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+        alertMsg: "There is an error at request data",
+      };
+    }
+    case "GET_CATEGORY_FULFILLED": {
+      return {
+        ...state,
+        isLoading: false,
+        dataCategory: action.payload.data.data,
+      };
+    }
+    // get category product
+    case "CATEGORY_PRODUCT_PENDING": {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+    case "CATEGORY_PRODUCT_REJECTED": {
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+        alertMsg: "There is an error at request data",
+      };
+    }
+    case "CATEGORY_PRODUCT_FULFILLED": {
+      return {
+        ...state,
+        isLoading: false,
+        categoryProduct: action.payload.data.data,
       };
     }
     default: {

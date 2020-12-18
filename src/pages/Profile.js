@@ -42,7 +42,6 @@ export default function Profile() {
   const token = localStorage.getItem('token')
   useEffect(() => {
     dispatch(profileAction.getProfile(token));
-    console.log(token);
   }, [dispatch, token]);
 
   return (
@@ -94,7 +93,7 @@ export default function Profile() {
                     />
                   </Media>
                   <Media body className="ml-2">
-                    <Link to="/address">address</Link>
+                    <Link to="/user/address">address</Link>
                   </Media>
                 </Media>
               </NavItem>

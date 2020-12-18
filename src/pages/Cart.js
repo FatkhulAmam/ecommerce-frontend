@@ -24,6 +24,7 @@ const Cart = () => {
   }, [dispatch, token]);
   const cartIndex = useSelector((state) => state.product);
   const { isLoading, isError, dataCart } = cartIndex;
+  const url = "http://localhost:8180/";
 
   return (
     <div>
@@ -53,7 +54,7 @@ const Cart = () => {
                           <Input type="checkbox" />
                           <img
                             className="img-cart"
-                            src={bgDefault}
+                            src={`${url}${item.url}`}
                             alt="img-product"
                           />
                           <div>

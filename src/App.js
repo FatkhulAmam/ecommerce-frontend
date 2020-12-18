@@ -36,7 +36,7 @@ const App = () => {
           path="/product/:id"
           render={(props) => <ProductDetail {...props} />}
         />
-        <Route path="/category/product" render={() => <CategoryDetail />} />
+        <Route path="/category/product/:id" render={(props) => <CategoryDetail {...props} />} />
         <Route path="/cart" render={() => <Cart />} />
         <Route path="/check_out" render={() => <CheckOut />} />
         <PrivateRoot path="/profile" exact>

@@ -7,4 +7,10 @@ export default {
       payload: http(token).get("user"),
     };
   },
+  getAddress: (token) => {
+    return {
+      type: "GET_ADDRESS",
+      payload: http(token).get("user/address"),
+    };
+  },
 };

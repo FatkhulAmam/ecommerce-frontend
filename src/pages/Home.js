@@ -13,7 +13,7 @@ import {
   CardSubtitle,
   CardImg,
 } from "reactstrap";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 // import redux
 import productAction from "../redux/actions/product";
@@ -30,10 +30,17 @@ const breakPoints = [
 class Home extends Component {
   componentDidMount() {
     this.props.getProduct();
+    this.props.getCategory();
   }
   render() {
     const url = "http://localhost:8180/";
-    const { isLoading, data, isError, alertMsg } = this.props.product;
+    const {
+      isLoading,
+      data,
+      isError,
+      alertMsg,
+      dataCategory,
+    } = this.props.product;
     return (
       <>
         <Navbar />
@@ -52,6 +59,26 @@ class Home extends Component {
           <span className="text-secondary small">
             what are you curently looking for
           </span>
+          <Row>
+            {!isLoading &&
+              !isError &&
+              dataCategory.length !== 0 &&
+              dataCategory.map((item) => {
+                return (
+                  <Link to={`/category/product/${item.id}`}>
+                    <Col>
+                      <Card className="category-card">
+                        <CardBody>
+                          <CardTitle>
+                            <h3>{item.category_name}</h3>
+                          </CardTitle>
+                        </CardBody>
+                      </Card>
+                    </Col>
+                  </Link>
+                );
+              })}
+          </Row>
           <h3>New</h3>
           <span className="text-secondary small">you never seem it before</span>
           <Row>
@@ -75,7 +102,9 @@ class Home extends Component {
                             {item.price}
                           </CardSubtitle>
                           <CardSubtitle>
-                            <h6 className="product_name">{item.category_name}</h6>
+                            <h6 className="product_name">
+                              {item.category_name}
+                            </h6>
                           </CardSubtitle>
                         </CardBody>
                       </Card>
@@ -100,6 +129,7 @@ const mapDispatchToProps = {
   getProduct: productAction.getData,
   searchAction: productAction.searchData,
   getDetail: productAction.getDetailById,
+  getCategory: productAction.getCategory,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

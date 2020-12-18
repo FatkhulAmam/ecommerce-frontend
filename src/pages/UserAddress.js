@@ -20,7 +20,7 @@ export default function Address() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(profileAction.getProfile(token));
+    dispatch(profileAction.getAddress(token));
   }, [dispatch, token]);
 
   return (

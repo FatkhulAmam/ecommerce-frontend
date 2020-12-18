@@ -33,6 +33,7 @@
     width: 360px;
 }
 
+/* style home */
 .btn-custommer, .btn-seller, .btn-auth{
     background-color: white;
     border-color: #00ff00;
@@ -59,6 +60,11 @@
 .product_name{
   text-decoration: none;
   color: #000;
+}
+.category-card{
+  width: 178px;
+  margin: 10px;
+  background-color: rgb(98, 255, 50);
 }
 
 /*category detail style*/
