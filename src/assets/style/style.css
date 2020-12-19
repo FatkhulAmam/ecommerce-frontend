@@ -63,6 +63,7 @@
 }
 .category-card{
   width: 178px;
+  height: 178px;
   margin: 10px;
   background-color: rgb(98, 255, 50);
 }

@@ -21,6 +21,7 @@ import profileAction from "../redux/actions/profile";
 
 export default function Profile() {
   const { data } = useSelector((state) => state.profile);
+  const token = useSelector((state) => state.auth.token)
   const dispatch = useDispatch();
 
   const [user_name, setName] = useState("");
@@ -39,10 +40,20 @@ export default function Profile() {
       setBirth(data[0].birth);
     }
   }, [data]);
-  const token = localStorage.getItem('token')
   useEffect(() => {
     dispatch(profileAction.getProfile(token));
   }, [dispatch, token]);
+
+  const onChangeProfile = () => {
+    const dataProfile = {
+      user_name,
+      email,
+      phone,
+      gender,
+      birth
+    }
+    dispatch(profileAction.updateProfile(token, dataProfile))
+  }
 
   return (
     <React.Fragment>
@@ -174,7 +185,7 @@ export default function Profile() {
                   </Col>
                   <Col md={4} />
                   <Col md={8}>
-                    <Button className="rounded-pill px-4" color="success">
+                    <Button className="rounded-pill px-4" color="success" type='submit' onClick={onChangeProfile} >
                       save
                     </Button>
                   </Col>

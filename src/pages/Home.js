@@ -68,7 +68,7 @@ class Home extends Component {
                   <Link to={`/category/product/${item.id}`}>
                     <Col>
                       <Card className="category-card">
-                        <CardBody>
+                        <CardBody className="flex justify-content-center align-item-center">
                           <CardTitle>
                             <h3>{item.category_name}</h3>
                           </CardTitle>
