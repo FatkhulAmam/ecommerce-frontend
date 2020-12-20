@@ -61,6 +61,10 @@ export default function Profile() {
     modalOpen()
   }
 
+  const onLogout = () =>{
+    localStorage.clear()
+  }
+
   return (
     <React.Fragment>
       <Navbar />
@@ -111,6 +115,15 @@ export default function Profile() {
                   </Media>
                   <Media body className="ml-2">
                     <Link to="/user/address">address</Link>
+                  </Media>
+                </Media>
+              </NavItem>
+            </Nav>
+            <Nav vertical className="pl-3">
+              <NavItem>
+                <Media className="align-items-center">
+                  <Media body className="ml-2">
+                    <Link to="/" onClick={onLogout}>logout</Link>
                   </Media>
                 </Media>
               </NavItem>
