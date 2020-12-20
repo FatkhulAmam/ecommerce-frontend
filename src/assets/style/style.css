@@ -67,6 +67,9 @@
   margin: 10px;
   background-color: rgb(98, 255, 50);
 }
+.modalBtn{
+  width: 50px;
+}
 
 /*category detail style*/
 .one{

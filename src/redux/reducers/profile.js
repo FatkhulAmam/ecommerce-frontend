@@ -51,6 +51,29 @@ export default (state = initialState, action) => {
         isLoading: false,
       };
     }
+    //get user address
+    case "UPDATE_PROFILE_PENDING": {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+    case "UPDATE_PROFILE_REJECTED": {
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+        message: "cannot update profile",
+      };
+    }
+    case "UPDATE_PROFILE_FULFILLED": {
+      return {
+        ...state,
+        dataAddress: action.payload.data.data,
+        isLoading: false,
+        message: "Profile Update Succesfully"
+      };
+    }
     case "CLEAR_MESSAGE": {
       return {
         ...state,

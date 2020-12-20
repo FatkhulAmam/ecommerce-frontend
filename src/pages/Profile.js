@@ -9,6 +9,8 @@ import {
   Button,
   Nav,
   NavItem,
+  Modal,
+  ModalBody
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { FaPencilAlt } from "react-icons/fa";
@@ -21,9 +23,12 @@ import profileAction from "../redux/actions/profile";
 
 export default function Profile() {
   const { data } = useSelector((state) => state.profile);
+  const  profileIndex = useSelector((state) => state.profile);
   const token = useSelector((state) => state.auth.token)
   const dispatch = useDispatch();
 
+  const [modal, setModal] = useState(false);
+  const modalOpen = () => setModal(!modal);
   const [user_name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -44,7 +49,7 @@ export default function Profile() {
     dispatch(profileAction.getProfile(token));
   }, [dispatch, token]);
 
-  const onChangeProfile = () => {
+  const onChangeProfile = async () => {
     const dataProfile = {
       user_name,
       email,
@@ -52,7 +57,8 @@ export default function Profile() {
       gender,
       birth
     }
-    dispatch(profileAction.updateProfile(token, dataProfile))
+    await dispatch(profileAction.updateProfile(token, dataProfile))
+    modalOpen()
   }
 
   return (
@@ -215,6 +221,12 @@ export default function Profile() {
           </div>
         </div>
       </div>
+      <Modal isOpen={modal}>
+        <ModalBody>{profileIndex.message}</ModalBody>
+        <div className="d-flex justify-content-end">
+          <Button color="secondary" onClick={modalOpen} className="modalBtn m-3" >OK</Button>
+        </div>
+      </Modal>
     </React.Fragment>
   );
 }
