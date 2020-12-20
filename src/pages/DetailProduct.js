@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Container, Row, Button } from "reactstrap";
+import { Container, Row, Button, Modal, ModalBody } from "reactstrap";
 import { connect } from "react-redux";
 import Navbar from "../component/NavSearchBar";
-import {Link} from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 import bgDefault from "../assets/image/bgProduct.png";
 
@@ -11,18 +11,35 @@ import productAction from "../redux/actions/product";
 class CategoryDetail extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      token: localStorage.getItem("token"),
+      amount: 1,
+      modal: false,
+    };
+  }
+  modalOpen = () => this.setState(!this.state.modal);
+  componentDidMount() {
+    const id = this.props.match.params.id;
+    this.props.getDetail(id);
   }
 
-  componentDidMount() {
-    const id = this.props.match.params.id
-    this.props.getDetail(id)
-  }
-  
+  onAddToCart = () => {
+    const itemsId = this.props.match.params.id;
+    const token = this.state.token;
+    const amount = this.state.amount;
+    const product = {
+      itemsId,
+      amount,
+    };
+    this.props.addToCart(token, product);
+    if (this.props.product.isError === true) {
+      this.modalOpen();
+    }
+  };
 
   render() {
     const url = "http://localhost:8180/";
-    const {dataDetail} = this.props.product
+    const { dataDetail } = this.props.product;
     return (
       <>
         <Navbar />
@@ -30,7 +47,11 @@ class CategoryDetail extends Component {
           <Row>
             <div className="product-img mt-4">
               <div>
-                <img className="one" src={`${url}${dataDetail.url}`} alt="img product one" />
+                <img
+                  className="one"
+                  src={`${url}${dataDetail.url}`}
+                  alt="img product one"
+                />
                 <img
                   className="two ml-3"
                   src={bgDefault}
@@ -63,7 +84,11 @@ class CategoryDetail extends Component {
               </Row>
               <Row>
                 <Button className="btn-chat rounded-pill ml-2">chat</Button>
-                <Button href='/cart' className="btn-add rounded-pill ml-2">
+                <Button
+                  onClick={this.onAddToCart}
+                  href="/cart"
+                  className="btn-add rounded-pill ml-2"
+                >
                   add to cart
                 </Button>
                 <Button className="btn-buy-now rounded-pill ml-2">
@@ -81,6 +106,18 @@ class CategoryDetail extends Component {
           <hr />
           <h4>You can also like this</h4>
         </Container>
+        <Modal isOpen={this.state.modal}>
+          <ModalBody>{this.props.product.message}</ModalBody>
+          <div className="d-flex justify-content-end">
+            <Button
+              color="secondary"
+              onClick={this.modalOpen}
+              className="modalBtn m-3"
+            >
+              OK
+            </Button>
+          </div>
+        </Modal>
       </>
     );
   }
@@ -91,6 +128,7 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = {
   getDetail: productAction.getDetailById,
+  addToCart: productAction.addToCart,
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(CategoryDetail)
+export default connect(mapStateToProps, mapDispatchToProps)(CategoryDetail);

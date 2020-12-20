@@ -1,4 +1,5 @@
 import http from "../../helpers/http";
+import qs from "querystring"
 
 export default {
   getData: () => ({
@@ -16,6 +17,10 @@ export default {
   getCart: (token) => ({
     type: "GET_CART",
     payload: http(token).get('cart'),
+  }),
+  addToCart: (token, product) => ({
+    type: "ADD_CART",
+    payload: http(token).post('cart', qs.stringify(product)),
   }),
   getCategory: () => ({
     type: "GET_CATEGORY",

@@ -54,7 +54,7 @@ export default (state = initialState, action) => {
         dataDetail: action.payload.data.data,
       };
     }
-    // get detail by id
+    // get cart
     case "GET_CAR_PENDING": {
       return {
         ...state,
@@ -74,6 +74,28 @@ export default (state = initialState, action) => {
         ...state,
         isLoading: false,
         dataCart: action.payload.data.data,
+      };
+    }
+    // add product to cart
+    case "ADD_CAR_PENDING": {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+    case "ADD_CART_REJECTED": {
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+        alertMsg: "can't buy product data",
+      };
+    }
+    case "ADD_CART_FULFILLED": {
+      return {
+        ...state,
+        isLoading: false,
+        message: "Add product to my cart"
       };
     }
     // get category
