@@ -10,13 +10,14 @@ import {
   Card,
   CardBody,
   CardTitle,
-  CardSubtitle,
-  CardImg,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
 // import redux
 import productAction from "../redux/actions/product";
+
+//import component
+import CardProduct from "../component/CardProduct"
 
 // import asset image
 import carousel1 from "../assets/image/corou1.png";
@@ -55,7 +56,7 @@ class Home extends Component {
           </Carousel>
         </div>
         <Container className="mt-4">
-          <div className="h3">Category</div>
+          <div className="h3 font-weight-bold">Category</div>
           <span className="text-secondary small">
             what are you curently looking for
           </span>
@@ -67,7 +68,7 @@ class Home extends Component {
                 return (
                   <Link to={`/category/product/${item.id}`}>
                     <Col>
-                      <Card className="category-card">
+                      <Card className="category-card mb-5">
                         <CardBody className="flex justify-content-center align-item-center">
                           <CardTitle>
                             <h3>{item.category_name}</h3>
@@ -79,37 +80,21 @@ class Home extends Component {
                 );
               })}
           </Row>
-          <h3>New</h3>
+          <h3 className="font-weight-bold">New</h3>
           <span className="text-secondary small">you never seem it before</span>
-          <Row>
+          <Row className="mb-4">
             {!isLoading &&
               !isError &&
               data.length !== 0 &&
               data.map((item) => {
                 return (
-                  <Link to={`/product/${item.id}`}>
-                    <Col className="mt-4">
-                      <Card className="card-home shadow-sm">
-                        <CardImg
-                          className="default-img"
-                          src={`${url}${item.url}`}
-                        />
-                        <CardBody>
-                          <CardTitle>
-                            <h5 className="product_name">{item.name}</h5>
-                          </CardTitle>
-                          <CardSubtitle className="text-danger mb-2">
-                            {item.price}
-                          </CardSubtitle>
-                          <CardSubtitle>
-                            <h6 className="product_name">
-                              {item.category_name}
-                            </h6>
-                          </CardSubtitle>
-                        </CardBody>
-                      </Card>
-                    </Col>
-                  </Link>
+                  <CardProduct
+                    productId={item.id}
+                    productName={item.name}
+                    productCategory={item.category_name}
+                    productPrice={item.price}
+                    productImage={url + item.url}
+                  />
                 );
               })}
           </Row>

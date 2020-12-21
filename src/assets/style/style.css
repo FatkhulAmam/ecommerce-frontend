@@ -57,9 +57,13 @@
     width: 198px;
     height: 150px;
 }
-.product_name{
-  text-decoration: none;
+.product-name{
   color: #000;
+  font-size: 17px;
+}
+.categoryText{
+  color: rgb(136, 136, 136);
+  font-size: 15px;
 }
 .category-card{
   width: 178px;
@@ -69,6 +73,15 @@
 }
 .modalBtn{
   width: 50px;
+}
+.star{
+  width: 18px;
+  height: 18px;
+  margin-Top: 5px;
+}
+.star-num{
+  margin-top: 5px;
+  color: rgb(136, 136, 136);
 }
 
 /*category detail style*/

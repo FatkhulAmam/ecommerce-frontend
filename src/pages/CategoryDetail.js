@@ -5,16 +5,12 @@ import "../assets/style/style.css";
 import {
   Container,
   Row,
-  Col,
-  Card,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardImg,
 } from "reactstrap";
-import { Link } from "react-router-dom";
 // import redux
 import productAction from "../redux/actions/product";
+
+//import component
+import CardProduct from "../component/CardProduct"
 
 class CategoryDetail extends Component {
   constructor(props) {
@@ -43,29 +39,13 @@ class CategoryDetail extends Component {
               categoryProduct.length !== 0 &&
               categoryProduct.map((item) => {
                 return (
-                  <Link to={`/product/${item.id}`}>
-                    <Col className="mt-4">
-                      <Card className="card-home shadow-sm">
-                        <CardImg
-                          className="default-img"
-                          src={`${url}${item.url}`}
-                        />
-                        <CardBody>
-                          <CardTitle>
-                            <h5 className="product_name">{item.name}</h5>
-                          </CardTitle>
-                          <CardSubtitle className="text-danger mb-2">
-                            {item.price}
-                          </CardSubtitle>
-                          <CardSubtitle>
-                            <h6 className="product_name">
-                              {item.category_name}
-                            </h6>
-                          </CardSubtitle>
-                        </CardBody>
-                      </Card>
-                    </Col>
-                  </Link>
+                  <CardProduct
+                    productId={item.id}
+                    productName={item.name}
+                    productCategory={item.category_name}
+                    productPrice={item.price}
+                    productImage={url + item.url}
+                  />
                 );
               })}
           </Row>
