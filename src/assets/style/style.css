@@ -23,17 +23,22 @@
     height: 100px;
 }
 .btn-plus, .btn-min{
-    height: 40px;
-    width: 40px;
+    height: 35px;
+    width: 35px;
     margin: 10px;
     background-color: rgb(212, 212, 212);
     border-color: rgb(212, 212, 212);
+}
+.counter-txt{
+  margin-top: 17px;
 }
 .card-buy{
     width: 400px;
 }
 .btn-buy{
     width: 360px;
+    background-color: rgb(212, 212, 212);
+    border-color: rgb(212, 212, 212);
 }
 
 /* style home */
@@ -104,6 +109,13 @@
 .price-tag{
   margin-top: -5px;
   margin-bottom: 20px;
+}
+.btn-plus-order, .btn-min-order{
+    height: 40px;
+    width: 40px;
+    margin: 10px;
+    background-color: rgb(212, 212, 212);
+    border-color: rgb(212, 212, 212);
 }
 .one{
   width: 200px;

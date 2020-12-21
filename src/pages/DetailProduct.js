@@ -101,17 +101,17 @@ class CategoryDetail extends Component {
                 <div>
                   <h5>size </h5>
                   <Row>
-                    <Button className="btn-plus rounded-circle">+</Button>
+                    <Button className="btn-plus-order rounded-circle">+</Button>
                     <p className="mt-3">1</p>
-                    <Button className="btn-min rounded-circle">-</Button>
+                    <Button className="btn-min-order rounded-circle">-</Button>
                   </Row>
                 </div>
                 <div>
                   <h5 className="ml-4">count</h5>
                   <Row className="ml-4">
-                    <Button className="btn-plus rounded-circle">+</Button>
+                    <Button className="btn-plus-order rounded-circle">+</Button>
                     <p className="mt-3">1</p>
-                    <Button className="btn-min rounded-circle">-</Button>
+                    <Button className="btn-min-order rounded-circle">-</Button>
                   </Row>
                 </div>
               </Row>

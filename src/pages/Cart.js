@@ -14,6 +14,9 @@ import Navbar from "../component/NavProfileBar";
 import "../assets/style/style.css";
 import CartAction from "../redux/actions/product";
 
+//import component
+import CartCard from "../component/CartCard";
+
 import bgDefault from "../assets/image/bgProduct.png";
 
 const Cart = () => {
@@ -35,12 +38,10 @@ const Cart = () => {
           <Row>
             <div>
               <Card className="cart-check shadow-sm mt-3">
-                <CardBody className="ml-3">
+                <CardBody className="ml-3 row">
                   <Input type="checkbox" />
-                  <p>
-                    Select All item
-                    <a href="/cart"> delete</a>
-                  </p>
+                  <p className="col-sm-11">Select All item</p>
+                  <a href="/cart" className="text-danger"> delete</a>
                 </CardBody>
               </Card>
               {!isLoading &&
@@ -48,26 +49,13 @@ const Cart = () => {
                 dataCart.length !== 0 &&
                 dataCart.map((item) => {
                   return (
-                    <Card className="shadow-sm mt-3">
-                      <CardBody className="ml-4">
-                        <Row>
-                          <Input type="checkbox" />
-                          <img
-                            className="img-cart"
-                            src={`${url}${item.url}`}
-                            alt="img-product"
-                          />
-                          <div>
-                            <CardTitle>{item.name}</CardTitle>
-                            <CardSubtitle>nama toko</CardSubtitle>
-                          </div>
-                          <Button className="btn-plus rounded-circle">+</Button>
-                          <p>1</p>
-                          <Button className="btn-min rounded-circle">-</Button>
-                          <p className="text-danger">{item.price}</p>
-                        </Row>
-                      </CardBody>
-                    </Card>
+                    <CartCard
+                      productId={item.id}
+                      productName={item.name}
+                      productCategory={item.category_name}
+                      productPrice={item.price}
+                      productImage={url + item.url}
+                    />
                   );
                 })}
             </div>
@@ -75,10 +63,10 @@ const Cart = () => {
               <Card className="card-buy shadow-sm mt-3 ml-4">
                 <CardBody>
                   <CardTitle>Shopping summary</CardTitle>
-                  <Row>
-                    <CardSubtitle>Total Harga</CardSubtitle>
+                  <div className="row mb-5">
+                    <CardSubtitle className="col-sm-10">Total Harga</CardSubtitle>
                     <p className="text-danger">price</p>
-                  </Row>
+                  </div>
                   <Button className="btn-buy rounded-pill">Buy</Button>
                 </CardBody>
               </Card>
