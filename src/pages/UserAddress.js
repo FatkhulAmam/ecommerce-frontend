@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  Media,
-  Nav,
-  NavItem,
-  Card,
-} from "reactstrap";
+import { Media, Nav, NavItem, Card, CardTitle } from "reactstrap";
 import { Link } from "react-router-dom";
 import { FaPencilAlt, FaSignOutAlt } from "react-icons/fa";
 
 import Navbar from "../component/NavProfileBar";
+import CardAddress from "../component/CardAddress";
 //import style
 import "../assets/style/style.css";
 // import image
@@ -17,12 +13,11 @@ import EditSvg from "../assets/image/userDef.svg";
 import MapPin from "../assets/image/map-pin.svg";
 import Clipbord from "../assets/image/clipboard.svg";
 
-import profileAction from "../redux/actions/profile";
-
 export default function Address() {
-  const token = useSelector((state) => state.auth.token);
-  const { data } = useSelector((state) => state.profile);
-  const dispatch = useDispatch();
+  const { data, isLoading, isError, message } = useSelector(
+    (state) => state.profile
+  );
+  const dataAddress = useSelector((state) => state.profile.dataAddress);
   const url = "http://localhost:8180/";
   const [avatar, setAvatar] = useState("");
   const [user_name, setName] = useState("");
@@ -33,10 +28,6 @@ export default function Address() {
       setAvatar(data[0].photo);
     }
   }, [data]);
-
-  useEffect(() => {
-    dispatch(profileAction.getAddress(token));
-  }, [dispatch, token]);
 
   const onLogout = () => {
     localStorage.clear();
@@ -76,13 +67,13 @@ export default function Address() {
                         <img src={EditSvg} alt="edit" />
                       </Media>
                       <Media body className="ml-2">
-                        edit profile
+                        My account
                       </Media>
                     </Media>
                   </Link>
                 </NavItem>
                 <NavItem className="nav-item">
-                  <Link to="/user/address">
+                  <Link to="/profile/address">
                     <Media className="align-items-center">
                       <Media
                         left
@@ -112,13 +103,10 @@ export default function Address() {
                   </Link>
                 </NavItem>
                 <NavItem className="nav-item">
-                    <Link to="/" onClick={onLogout}>
+                  <Link to="/" onClick={onLogout}>
                     <Media className="align-items-center">
-                      <Media
-                        left
-                        className="d-flex justify-content-center"
-                      >
-                      <FaSignOutAlt color="#8e8e8e" size={22} />
+                      <Media left className="d-flex justify-content-center">
+                        <FaSignOutAlt color="#8e8e8e" size={22} />
                       </Media>
                       <Media body className="ml-2">
                         Logout
@@ -131,13 +119,36 @@ export default function Address() {
           </aside>
         </div>
         <div className="d-flex content p-5" sm="9">
-          <div className="profile-edit shadow p-3">
-            <div className="heading h3">Choose Another Address</div>
+          <div className="profile-edit shadow p-3 ">
+            <div className="heading h3 font-weight-bold">
+              Choose Another Address
+            </div>
             <div className="text-muted small">
               add or change address rescipients
             </div>
             <hr />
-            <Card></Card>
+            <div className="ml-5 mr-5 pb-5">
+              <Card className="d-flex justify-content-center align-items-center card-add">
+                <CardTitle className="h5 text-muted">Add New Address</CardTitle>
+              </Card>
+                {!isLoading &&
+                  !isError &&
+                  dataAddress.length !== 0 &&
+                  dataAddress.map((item) => {
+                    return (
+                      <CardAddress
+                        addressId={item.id}
+                        userName={item.recipients_name}
+                        userAddress={item.address}
+                        userHome={item.home}
+                        postalCode={item.postal_code}
+                        userPhone={item.recipients_phone}
+                      />
+                    );
+                  })}
+              {isLoading && !isError && <div>Loading</div>}
+              {isError && message !== "" && <div>{message}</div>}
+            </div>
           </div>
         </div>
       </div>

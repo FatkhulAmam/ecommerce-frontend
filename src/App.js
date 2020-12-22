@@ -42,7 +42,7 @@ const App = () => {
         <PrivateRoot path="/profile" exact>
           <Profile />
         </PrivateRoot>
-        <Route path="/user/address" render={() => <Address />} />
+        <Route path="/profile/address" render={() => <Address />} />
         <Route path="/my_product" component={MyProduct} />
         <Route path="/add_product" component={AddProduct} />
         <Route path="/edit/:id" component={Edit} />

@@ -190,3 +190,9 @@
   height: 25px;
   border-radius: 15px;
 }
+
+/*address style */
+.card-add{
+  border-style: dashed;
+  height: 100px;
+}

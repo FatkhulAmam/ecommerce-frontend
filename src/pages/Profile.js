@@ -29,7 +29,7 @@ import profileAction from "../redux/actions/profile";
 export default function Profile() {
   const { data } = useSelector((state) => state.profile);
   const profileIndex = useSelector((state) => state.profile);
-  const token = useSelector((state) => state.auth.token);
+  const token = localStorage.getItem("token");
   const dispatch = useDispatch();
   const url = "http://localhost:8180/";
 
@@ -55,6 +55,7 @@ export default function Profile() {
   }, [data]);
   useEffect(() => {
     dispatch(profileAction.getProfile(token));
+    dispatch(profileAction.getAddress(token));
   }, [dispatch, token]);
 
   const onChangeProfile = async () => {
@@ -113,7 +114,7 @@ export default function Profile() {
                   </Link>
                 </NavItem>
                 <NavItem className="nav-item">
-                  <Link to="/user/address">
+                  <Link to="/profile/address">
                     <Media className="align-items-center">
                       <Media
                         left
