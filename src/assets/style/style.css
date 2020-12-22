@@ -162,3 +162,31 @@
 .form-edit{
     background-color: #ebebeb;
 }
+.edit-text{
+  font-size: 15px;
+}
+.nav-item{
+  margin-top: 10px;
+}
+.side-img{
+  width: 60px;
+  height: 60px;
+}
+.edit-img-wrap{
+  background-color: rgb(0, 3, 187);
+  width: 25px;
+  height: 25px;
+  border-radius: 15px;
+}
+.pin-img-wrap{
+  background-color: rgb(255, 167, 2);
+  width: 25px;
+  height: 25px;
+  border-radius: 15px;
+}
+.clip-img-wrap{
+  background-color: rgb(255, 0, 255);
+  width: 25px;
+  height: 25px;
+  border-radius: 15px;
+}

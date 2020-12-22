@@ -29,7 +29,7 @@ const App = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path="/" component={Home} exact />
+        <Route path="/" component={Profile} exact />
         <Route path="/signup" component={Signup} />
         <Route path="/login" render={(props) => <Login {...props} />} />
         <Route
