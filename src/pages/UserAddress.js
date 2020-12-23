@@ -1,6 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Media, Nav, NavItem, Card, CardTitle } from "reactstrap";
+import {
+  Media,
+  Nav,
+  NavItem,
+  Card,
+  CardTitle,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Input,
+  Label,
+} from "reactstrap";
 import { Link } from "react-router-dom";
 import { FaPencilAlt, FaSignOutAlt } from "react-icons/fa";
 
@@ -12,8 +25,11 @@ import "../assets/style/style.css";
 import EditSvg from "../assets/image/userDef.svg";
 import MapPin from "../assets/image/map-pin.svg";
 import Clipbord from "../assets/image/clipboard.svg";
+import profileAction from "../redux/actions/profile";
 
-export default function Address() {
+function Address() {
+  const token = localStorage.getItem("token");
+  const dispatch = useDispatch();
   const { data, isLoading, isError, message } = useSelector(
     (state) => state.profile
   );
@@ -22,7 +38,11 @@ export default function Address() {
   const [avatar, setAvatar] = useState("");
   const [user_name, setName] = useState("");
 
+  const [modal, setModal] = useState(false);
+  const modalOpen = () => setModal(!modal);
+
   useEffect(() => {
+    dispatch(profileAction.getAddress(token));
     if (data.length) {
       setName(data[0].user_name);
       setAvatar(data[0].photo);
@@ -128,30 +148,80 @@ export default function Address() {
             </div>
             <hr />
             <div className="ml-5 mr-5 pb-5">
-              <Card className="d-flex justify-content-center align-items-center card-add">
+              <Card
+                className="d-flex justify-content-center align-items-center card-add"
+                onClick={modalOpen}
+              >
                 <CardTitle className="h5 text-muted">Add New Address</CardTitle>
               </Card>
-                {!isLoading &&
-                  !isError &&
-                  dataAddress.length !== 0 &&
-                  dataAddress.map((item) => {
-                    return (
-                      <CardAddress
-                        addressId={item.id}
-                        userName={item.recipients_name}
-                        userAddress={item.address}
-                        userHome={item.home}
-                        postalCode={item.postal_code}
-                        userPhone={item.recipients_phone}
-                      />
-                    );
-                  })}
+              {!isLoading &&
+                !isError &&
+                dataAddress.length !== 0 &&
+                dataAddress.map((item) => {
+                  return (
+                    <CardAddress
+                      addressId={item.id}
+                      userName={item.recipients_name}
+                      userAddress={item.address}
+                      userHome={item.home}
+                      postalCode={item.postal_code}
+                      userPhone={item.recipients_phone}
+                    />
+                  );
+                })}
               {isLoading && !isError && <div>Loading</div>}
               {isError && message !== "" && <div>{message}</div>}
             </div>
           </div>
         </div>
       </div>
+      <div>
+        <Modal isOpen={true} className="modal-dialog-centered modal-lg">
+          <ModalHeader className="row justify-content-center mt-3"><p className="font-weight-bold">Add New Address</p></ModalHeader>
+          <ModalBody>
+            <label className="text-muted small mb-2">
+              Save address as (ex: home address, office address)
+            </label>
+            <Input />
+            <div className="row justify-content-center">
+              <div className="col" >
+                <label className="text-muted small">Recipient's Name</label>
+                <Input />
+              </div>
+              <div className="col" >
+                <label className="text-muted small">
+                  Recipient's Telphone Number
+                </label>
+                <Input/>
+              </div>
+            </div>
+            <div className="row justify-content-center mt-2">
+              <div  className="col">
+                <label className="text-muted small">Address</label>
+                <Input/>
+              </div>
+              <div className="col">
+                <label className="text-muted small">Postal Code</label>
+                <Input/>
+              </div>
+            </div>
+            <div>
+              <label className="text-muted small mt-2">City or Subdistrict</label>
+              <Input/>
+            </div>
+          </ModalBody>
+          <ModalFooter>
+            <Button color="primary" onClick={modalOpen}>
+              Cancel
+            </Button>{" "}
+            <Button color="success" onClick={modalOpen}>
+              Save
+            </Button>
+          </ModalFooter>
+        </Modal>
+      </div>
     </React.Fragment>
   );
 }
+
+export default Address;
