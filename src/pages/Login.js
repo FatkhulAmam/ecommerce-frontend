@@ -31,13 +31,14 @@ class login extends React.Component {
     };
     await this.props.login(data);
     localStorage.setItem('token', this.props.auth.token)
+    localStorage.setItem('isLogin', this.props.auth.isLogin)
   };
   onChangeText = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
   componentDidUpdate() {
     if (this.props.auth.isLogin) {
-      this.props.history.push("/profile");
+      this.props.history.push("/");
     }
   }
 

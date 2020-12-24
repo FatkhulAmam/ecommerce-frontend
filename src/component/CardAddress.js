@@ -8,13 +8,14 @@ import {
   ModalBody,
   ModalFooter,
   Input,
+  Button,
 } from "reactstrap";
 
 export default class CardAddress extends Component {
   state = {
     modal: false,
   };
-  modalOpen = () => this.setState(!modal);
+  modalOpen = () =>{this.setState({modal: !this.state.modal})}
 
   render() {
     const {
@@ -31,13 +32,19 @@ export default class CardAddress extends Component {
           <CardText>
             {userAddress}, {userHome}, {postalCode}, phone 0{userPhone}
           </CardText>
-          <CardText className="text-danger mb-3 font-weight-bold">
+          <CardText
+            className="text-danger mb-3 font-weight-bold"
+            onClick={this.modalOpen}
+          >
             Change Address
           </CardText>
         </Card>
         <div>
-          <Modal isOpen={true} className="modal-dialog-centered modal-lg">
-            <ModalHeader className="row justify-content-center mt-3">
+          <Modal
+            isOpen={this.state.modal}
+            className="modal-dialog-centered modal-lg"
+          >
+            <ModalHeader className="row justify-content-center mt-3 ml-2 mr-2">
               <p className="font-weight-bold">Change Address</p>
             </ModalHeader>
             <ModalBody>
@@ -75,7 +82,7 @@ export default class CardAddress extends Component {
               </div>
             </ModalBody>
             <ModalFooter>
-              <Button color="primary" onClick={this.modalOpen}>
+              <Button color="secondary" onClick={this.modalOpen}>
                 Cancel
               </Button>{" "}
               <Button color="success" onClick={this.modalOpen}>

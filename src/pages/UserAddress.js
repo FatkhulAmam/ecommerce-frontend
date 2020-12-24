@@ -176,8 +176,8 @@ function Address() {
         </div>
       </div>
       <div>
-        <Modal isOpen={true} className="modal-dialog-centered modal-lg">
-          <ModalHeader className="row justify-content-center mt-3"><p className="font-weight-bold">Add New Address</p></ModalHeader>
+        <Modal isOpen={modal} className="modal-dialog-centered modal-lg">
+          <ModalHeader className="row justify-content-center mt-3 ml-2 mr-2"><p className="font-weight-bold">Add New Address</p></ModalHeader>
           <ModalBody>
             <label className="text-muted small mb-2">
               Save address as (ex: home address, office address)
@@ -211,7 +211,7 @@ function Address() {
             </div>
           </ModalBody>
           <ModalFooter>
-            <Button color="primary" onClick={modalOpen}>
+            <Button color="secondary" onClick={modalOpen}>
               Cancel
             </Button>{" "}
             <Button color="success" onClick={modalOpen}>

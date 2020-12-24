@@ -37,15 +37,19 @@ const App = () => {
           render={(props) => <ProductDetail {...props} />}
         />
         <Route path="/category/product/:id" render={(props) => <CategoryDetail {...props} />} />
-        <Route path="/cart" render={() => <Cart />} />
         <Route path="/check_out" render={() => <CheckOut />} />
         <PrivateRoot path="/profile" exact>
           <Profile />
         </PrivateRoot>
-        <Route path="/profile/address" render={() => <Address />} />
-        <Route path="/my_product" component={MyProduct} />
-        <Route path="/add_product" component={AddProduct} />
-        <Route path="/edit/:id" component={Edit} />
+        <PrivateRoot path="/cart" exact>
+          <Cart />
+        </PrivateRoot>
+        <PrivateRoot path="/profile/address" exact>
+          <Address />
+        </PrivateRoot>
+        <Route path="/my_product" component={(props) => <MyProduct {...props}/>} />
+        <Route path="/add_product" component={(props) => <AddProduct {...props}/>} />
+        <Route path="/edit/:id" component={(props) => <Edit {...props}/>} />
       </Switch>
     </BrowserRouter>
   );

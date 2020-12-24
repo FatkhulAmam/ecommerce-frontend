@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 class PrivateRoute extends Component {
   render() {
+    const isLogin = (localStorage.getItem("isLogin") ? localStorage.getItem("isLogin") : false)
     return (
       <Route
         render={(props) => {
@@ -16,7 +17,7 @@ class PrivateRoute extends Component {
               return child;
             }
           );
-          if (this.props.auth.isLogin) {
+          if (isLogin) {
             return childWithProps;
           } else {
             return (
