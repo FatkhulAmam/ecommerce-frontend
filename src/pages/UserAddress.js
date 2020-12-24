@@ -17,7 +17,7 @@ import {
 import { Link } from "react-router-dom";
 import { FaPencilAlt, FaSignOutAlt } from "react-icons/fa";
 
-import Navbar from "../component/NavProfileBar";
+import Navbar from "../component/NavBar";
 import CardAddress from "../component/CardAddress";
 //import style
 import "../assets/style/style.css";

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import Carousel from "react-elastic-carousel";
-import Navbar from "../component/NavSearchBar";
+import Navbar from "../component/NavBar";
 import "../assets/style/style.css";
 import {
   Container,
@@ -42,6 +42,7 @@ class Home extends Component {
       alertMsg,
       dataCategory,
     } = this.props.product;
+    
     return (
       <>
         <Navbar />

@@ -17,7 +17,7 @@ import {
 } from "reactstrap";
 import "../assets/style/style.css";
 
-import Navbar from "../component/NavProfileBar";
+import Navbar from "../component/NavBar";
 
 import bgProduct from "../assets/image/bgProduct.png";
 // import product from '../redux/actions/product';

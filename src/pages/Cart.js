@@ -10,7 +10,7 @@ import {
   Input,
 } from "reactstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Navbar from "../component/NavProfileBar";
+import Navbar from "../component/NavBar";
 import "../assets/style/style.css";
 import CartAction from "../redux/actions/product";
 

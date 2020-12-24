@@ -20,7 +20,7 @@ import EditSvg from "../assets/image/userDef.svg";
 import MapPin from "../assets/image/map-pin.svg";
 import Clipbord from "../assets/image/clipboard.svg";
 
-import Navbar from "../component/NavProfileBar";
+import Navbar from "../component/NavBar";
 //import style
 import "../assets/style/style.css";
 

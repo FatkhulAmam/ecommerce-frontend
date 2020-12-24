@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Navbar from "../component/NavProfileBar";
+import Navbar from "../component/NavBar";
 import {
   Container,
   Card,

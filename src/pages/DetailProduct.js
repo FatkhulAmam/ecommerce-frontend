@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container, Row, Button, Modal, ModalBody } from "reactstrap";
 import { connect } from "react-redux";
-import Navbar from "../component/NavSearchBar";
+import Navbar from "../component/NavBar";
 import NumberFormat from "react-number-format";
 
 import bgDefault from "../assets/image/bgProduct.png";
