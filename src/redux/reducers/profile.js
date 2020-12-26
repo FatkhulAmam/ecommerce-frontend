@@ -74,6 +74,28 @@ export default (state = initialState, action) => {
         message: "Profile Update Succesfully"
       };
     }
+    //add user address
+    case "ADD_ADDRESS_PENDING": {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+    case "ADD_ADDRESS_REJECTED": {
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+        message: "There is error at input data",
+      };
+    }
+    case "ADD_ADDRESS_FULFILLED": {
+      return {
+        ...state,
+        isLoading: false,
+        message: "Add address success"
+      };
+    }
     case "CLEAR_MESSAGE": {
       return {
         ...state,

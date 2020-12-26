@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import {useSelector} from 'react-redux'
+import { useSelector } from "react-redux";
 
 // import private root
 import PrivateRoot from "./component/privateRoute";
@@ -24,7 +24,7 @@ import AddProduct from "./pages/AddProduct";
 import Edit from "./pages/Edit";
 
 const App = () => {
-  const auth = useSelector(state => state.auth)
+  const auth = useSelector((state) => state.auth);
 
   return (
     <BrowserRouter>
@@ -36,7 +36,10 @@ const App = () => {
           path="/product/:id"
           render={(props) => <ProductDetail {...props} />}
         />
-        <Route path="/category/product/:id" render={(props) => <CategoryDetail {...props} />} />
+        <Route
+          path="/category/product/:id"
+          render={(props) => <CategoryDetail {...props} />}
+        />
         <Route path="/check_out" render={() => <CheckOut />} />
         <PrivateRoot path="/profile" exact>
           <Profile />
@@ -47,9 +50,15 @@ const App = () => {
         <PrivateRoot path="/profile/address" exact>
           <Address />
         </PrivateRoot>
-        <Route path="/my_product" component={(props) => <MyProduct {...props}/>} />
-        <Route path="/add_product" component={(props) => <AddProduct {...props}/>} />
-        <Route path="/edit/:id" component={(props) => <Edit {...props}/>} />
+        <Route
+          path="/my_product"
+          component={(props) => <MyProduct {...props} />}
+        />
+        <Route
+          path="/add_product"
+          component={(props) => <AddProduct {...props} />}
+        />
+        <Route path="/edit/:id" component={(props) => <Edit {...props} />} />
       </Switch>
     </BrowserRouter>
   );

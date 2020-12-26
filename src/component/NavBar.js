@@ -21,6 +21,7 @@ import "../assets/style/style.css";
 
 // import redux action
 import productAction from "../redux/actions/product";
+import profileAction from "../redux/actions/profile";
 
 //import assets
 import logo from "../assets/image/logo.svg";
@@ -29,7 +30,7 @@ import search from "../assets/image/Search.svg";
 import filter from "../assets/image/filter.svg";
 import mail from "../assets/image/mail.svg";
 import bell from "../assets/image/bell.svg";
-import user from "../assets/image/user.png";
+import user from "../assets/image/avatar.png";
 
 class NavSearchBar extends React.Component {
   constructor(props) {
@@ -39,6 +40,12 @@ class NavSearchBar extends React.Component {
       keyword: "",
     };
   }
+  componentWillMount() {
+    const token = localStorage.getItem("token")
+    this.props.getProfileData(token)
+    this.props.getAddressData(token)
+  }
+  
   onChangeText = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -46,6 +53,7 @@ class NavSearchBar extends React.Component {
     this.props.searchAction(this.state.keyword);
   };
   render() {
+    const {photo} = this.props.profile
     const isLogin = localStorage.getItem("isLogin")
       ? localStorage.getItem("isLogin")
       : false;
@@ -130,9 +138,9 @@ class NavSearchBar extends React.Component {
                 <NavItem className="mr-3">
                   <Link to="/profile">
                     <img
-                      className="rounded-circle"
+                      className="rounded-circle avatar-nav"
                       src={user}
-                      alt="bell logo"
+                      alt="avatar logo"
                     />
                   </Link>
                 </NavItem>
@@ -145,10 +153,12 @@ class NavSearchBar extends React.Component {
   }
 }
 const mapStateToProps = (state) => ({
-  auth: state.auth,
+  profile: state.profile.data,
 });
 const mapDispatchToProps = {
   searchAction: productAction.searchData,
+  getProfileData: profileAction.getProfile,
+  getAddressData: profileAction.getAddress
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavSearchBar);

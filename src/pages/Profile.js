@@ -19,6 +19,7 @@ import { FaPencilAlt, FaSignOutAlt } from "react-icons/fa";
 import EditSvg from "../assets/image/userDef.svg";
 import MapPin from "../assets/image/map-pin.svg";
 import Clipbord from "../assets/image/clipboard.svg";
+import user from "../assets/image/avatar.png";
 
 import Navbar from "../component/NavBar";
 //import style
@@ -55,7 +56,6 @@ export default function Profile() {
   }, [data]);
   useEffect(() => {
     dispatch(profileAction.getProfile(token));
-    dispatch(profileAction.getAddress(token));
   }, [dispatch, token]);
 
   const onChangeProfile = async () => {
@@ -86,7 +86,7 @@ export default function Profile() {
                   <Media
                     className="rounded-circle m-3 side-img"
                     object
-                    src={url + avatar}
+                    src={avatar ? url + avatar : user}
                   />
                 </Media>
                 <Media body>
@@ -108,7 +108,7 @@ export default function Profile() {
                         <img src={EditSvg} alt="edit" />
                       </Media>
                       <Media body className="ml-2">
-                        edit profile
+                        My account
                       </Media>
                     </Media>
                   </Link>
@@ -123,7 +123,7 @@ export default function Profile() {
                         <img src={MapPin} alt="mapPin" />
                       </Media>
                       <Media body className="ml-2">
-                        address
+                        Address
                       </Media>
                     </Media>
                   </Link>

@@ -12,7 +12,6 @@ import {
   ModalBody,
   ModalFooter,
   Input,
-  Label,
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { FaPencilAlt, FaSignOutAlt } from "react-icons/fa";
@@ -26,20 +25,26 @@ import EditSvg from "../assets/image/userDef.svg";
 import MapPin from "../assets/image/map-pin.svg";
 import Clipbord from "../assets/image/clipboard.svg";
 import profileAction from "../redux/actions/profile";
+import user from "../assets/image/avatar.png";
 
-function Address() {
+const Address = () => {
   const token = localStorage.getItem("token");
   const dispatch = useDispatch();
   const { data, isLoading, isError, message } = useSelector(
     (state) => state.profile
   );
-  const dataAddress = useSelector((state) => state.profile.dataAddress);
   const url = "http://localhost:8180/";
   const [avatar, setAvatar] = useState("");
   const [user_name, setName] = useState("");
 
   const [modal, setModal] = useState(false);
   const modalOpen = () => setModal(!modal);
+  const [home, setHome] = useState("");
+  const [recipientName, setRecipientName] = useState("");
+  const [recipientPhone, setRecipientPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [postalCode, setPostalCode] = useState("");
 
   useEffect(() => {
     dispatch(profileAction.getAddress(token));
@@ -47,7 +52,22 @@ function Address() {
       setName(data[0].user_name);
       setAvatar(data[0].photo);
     }
-  }, [data]);
+  }, [dispatch, token, data]);
+  const dataAddress = useSelector((state) => state.profile.dataAddress);
+
+  const onAddAddress = async () => {
+    const data = {
+      home,
+      recipientName,
+      recipientPhone,
+      address,
+      city,
+      postalCode,
+    };
+    await dispatch(profileAction.addAddress(token, data));
+    modalOpen()
+    return dispatch(profileAction.getAddress(token));
+  };
 
   const onLogout = () => {
     localStorage.clear();
@@ -65,7 +85,7 @@ function Address() {
                   <Media
                     className="rounded-circle m-3 side-img"
                     object
-                    src={url + avatar}
+                    src={avatar ? url + avatar : user}
                   />
                 </Media>
                 <Media body>
@@ -102,7 +122,7 @@ function Address() {
                         <img src={MapPin} alt="mapPin" />
                       </Media>
                       <Media body className="ml-2">
-                        address
+                        Address
                       </Media>
                     </Media>
                   </Link>
@@ -177,44 +197,64 @@ function Address() {
       </div>
       <div>
         <Modal isOpen={modal} className="modal-dialog-centered modal-lg">
-          <ModalHeader className="row justify-content-center mt-3 ml-2 mr-2"><p className="font-weight-bold">Add New Address</p></ModalHeader>
+          <ModalHeader className="row justify-content-center mt-3 ml-2 mr-2">
+            <p className="font-weight-bold">Add New Address</p>
+          </ModalHeader>
           <ModalBody>
             <label className="text-muted small mb-2">
               Save address as (ex: home address, office address)
             </label>
-            <Input />
+            <Input onChange={(e) => setHome(e.target.value)} type="text" />
             <div className="row justify-content-center">
-              <div className="col" >
+              <div className="col">
                 <label className="text-muted small">Recipient's Name</label>
-                <Input />
+                <Input
+                  onChange={(e) => setRecipientName(e.target.value)}
+                  type="text"
+                />
               </div>
-              <div className="col" >
+              <div className="col">
                 <label className="text-muted small">
                   Recipient's Telphone Number
                 </label>
-                <Input/>
+                <Input
+                  onChange={(e) => setRecipientPhone(e.target.value)}
+                  type="number"
+                />
               </div>
             </div>
             <div className="row justify-content-center mt-2">
-              <div  className="col">
+              <div className="col">
                 <label className="text-muted small">Address</label>
-                <Input/>
+                <Input
+                  onChange={(e) => setAddress(e.target.value)}
+                  type="text"
+                />
               </div>
               <div className="col">
                 <label className="text-muted small">Postal Code</label>
-                <Input/>
+                <Input
+                  onChange={(e) => setPostalCode(e.target.value)}
+                  type="number"
+                />
               </div>
             </div>
             <div>
-              <label className="text-muted small mt-2">City or Subdistrict</label>
-              <Input/>
+              <label className="text-muted small mt-2">
+                City or Subdistrict
+              </label>
+              <Input
+                className="mb-5"
+                type="text"
+                onChange={(e) => setCity(e.target.value)}
+              />
             </div>
           </ModalBody>
           <ModalFooter>
-            <Button color="secondary" onClick={modalOpen}>
+            <Button color="secondary btn-modal m-3" onClick={modalOpen}>
               Cancel
             </Button>{" "}
-            <Button color="success" onClick={modalOpen}>
+            <Button color="success btn-modal m-3" onClick={onAddAddress}>
               Save
             </Button>
           </ModalFooter>
@@ -222,6 +262,6 @@ function Address() {
       </div>
     </React.Fragment>
   );
-}
+};
 
 export default Address;

@@ -10,6 +10,7 @@ import {
   Input,
   Button,
 } from "reactstrap";
+import { Link } from "react-router-dom";
 
 export default class CardAddress extends Component {
   state = {
@@ -19,6 +20,7 @@ export default class CardAddress extends Component {
 
   render() {
     const {
+      addressId,
       userName,
       userAddress,
       userHome,
@@ -32,12 +34,12 @@ export default class CardAddress extends Component {
           <CardText>
             {userAddress}, {userHome}, {postalCode}, phone 0{userPhone}
           </CardText>
-          <CardText
+          <Link
             className="text-danger mb-3 font-weight-bold"
             onClick={this.modalOpen}
           >
             Change Address
-          </CardText>
+          </Link>
         </Card>
         <div>
           <Modal
@@ -78,14 +80,14 @@ export default class CardAddress extends Component {
                 <label className="text-muted small mt-2">
                   City or Subdistrict
                 </label>
-                <Input />
+                <Input className="mb-5" />
               </div>
             </ModalBody>
             <ModalFooter>
-              <Button color="secondary" onClick={this.modalOpen}>
+              <Button color="secondary btn-modal m-3" onClick={this.modalOpen}>
                 Cancel
               </Button>{" "}
-              <Button color="success" onClick={this.modalOpen}>
+              <Button color="success btn-modal m-3" onClick={this.modalOpen}>
                 Save
               </Button>
             </ModalFooter>

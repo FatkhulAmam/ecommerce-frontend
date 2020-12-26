@@ -20,4 +20,10 @@ export default {
       payload: http(token).get("user/address"),
     };
   },
+  addAddress: (token, data) => {
+    return {
+      type: "ADD_ADDRESS",
+      payload: http(token).post("user/address", qs.stringify(data)),
+    };
+  },
 };
