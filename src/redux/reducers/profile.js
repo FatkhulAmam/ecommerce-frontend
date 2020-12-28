@@ -1,6 +1,7 @@
 const initialState = {
   data: {},
   dataAddress: {},
+  dataAddressById: {},
   isLoading: false,
   isError: false,
   message: "",
@@ -48,6 +49,28 @@ export default (state = initialState, action) => {
       return {
         ...state,
         dataAddress: action.payload.data.data,
+        isLoading: false,
+      };
+    }
+    //get user address
+    case "ADDRESS_ID_PENDING": {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+    case "ADDRESS_ID_REJECTED": {
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+        message: "There is error at request data",
+      };
+    }
+    case "ADDRESS_ID_FULFILLED": {
+      return {
+        ...state,
+        dataAddressById: action.payload.data.data,
         isLoading: false,
       };
     }

@@ -20,6 +20,12 @@ export default {
       payload: http(token).get("user/address"),
     };
   },
+  getAddressById: (token, id) => {
+    return {
+      type: "ADDRESS_ID",
+      payload: http(token).get(`user/address/${id}`),
+    };
+  },
   addAddress: (token, data) => {
     return {
       type: "ADD_ADDRESS",

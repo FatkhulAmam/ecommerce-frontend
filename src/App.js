@@ -17,6 +17,7 @@ import Cart from "./pages/Cart";
 import CheckOut from "./pages/CheckOut";
 import Profile from "./pages/Profile";
 import Address from "./pages/UserAddress";
+import EditAddress from "./pages/ChangeAddres"
 
 //importing page seller
 import MyProduct from "./pages/MyProduct";
@@ -50,6 +51,10 @@ const App = () => {
         <PrivateRoot path="/profile/address" exact>
           <Address />
         </PrivateRoot>
+        <Route
+          path="/profile/address/:id"
+          component={(props) => <EditAddress {...props} />}
+        />
         <Route
           path="/my_product"
           component={(props) => <MyProduct {...props} />}
