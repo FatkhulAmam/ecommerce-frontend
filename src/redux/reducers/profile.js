@@ -125,6 +125,27 @@ export default (state = initialState, action) => {
         message: "",
       };
     }
+    //update user avatar
+    case "UPDATE_AVATAR_PENDING": {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+    case "UPDATE_AVATAR_REJECTED": {
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+      };
+    }
+    case "UPDATE_AVATAR_FULFILLED": {
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+      };
+    }
     default: {
       return state;
     }

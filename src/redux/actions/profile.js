@@ -32,4 +32,10 @@ export default {
       payload: http(token).post("user/address", qs.stringify(data)),
     };
   },
+  updateAvatar: (token, form) => {
+    return {
+      type: "UPDATE_AVATAR",
+      payload: http(token).patch('user/avatar', form),
+    };
+  },
 };

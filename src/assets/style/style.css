@@ -194,6 +194,20 @@
   height: 25px;
   border-radius: 15px;
 }
+.avatar-profile{
+  overflow: hidden;
+  width: 150px;
+  height: 150px;
+  position: relative;
+  border-radius: 75px;
+}
+.avatar-profile img{
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 /*address style */
 .card-add{

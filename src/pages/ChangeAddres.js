@@ -28,15 +28,32 @@ import profileAction from "../redux/actions/profile";
 import user from "../assets/image/avatar.png";
 
 class Address extends Component {
-  state = {
-    avatar: "",
-    user_name: "",
-  };
-  componentDidMount() {
+  constructor(props) {
+  super(props)
+    this.state= {
+      avatar: "",
+      user_name: "",
+    }
+  }
+
+  componentWillMount() {
     const token = localStorage.getItem("token")
     const id = this.props.match.params.id
     this.props.getAddressId(token, id)
+    const { isLoading, isError, dataAddress, message, data, dataAddressById } = this.props.getProfile;
+    console.log(dataAddressById);
+    console.log("amam");
   }
+
+  // componentDidMount() {
+  //   const token = localStorage.getItem("token")
+  //   const id = this.props.match.params.id
+  //   this.props.getAddressId(token, id)
+  //   const { isLoading, isError, dataAddress, message, data, dataAddressById } = this.props.getProfile;
+  //   console.log(dataAddressById);
+  //   console.log("amam");
+  // }
+  
   
   render() {
     const url = "http://localhost:8180/";
@@ -175,8 +192,7 @@ class Address extends Component {
               <label className="text-muted small mb-2">
                 Save address as (ex: home address, office address)
               </label>
-              {console.log(dataAddressById.home)}
-              <Input type="text" value={dataAddressById.home}/>
+              <Input type="text" value="maamam"/>
               <div className="row justify-content-center">
                 <div className="col">
                   <label className="text-muted small">Recipient's Name</label>

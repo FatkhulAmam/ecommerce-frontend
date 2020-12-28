@@ -42,7 +42,6 @@ export default function Profile() {
   const [gender, setGender] = useState("");
   const [birth, setBirth] = useState("");
   const [avatar, setAvatar] = useState("");
-  // const uploadFile = React.useRef()
 
   useEffect(() => {
     if (data.length) {
@@ -73,6 +72,13 @@ export default function Profile() {
   const onLogout = () => {
     localStorage.clear();
   };
+
+  const uploadImage = async (e) => {
+      const form = new FormData();
+      form.append("pictures", e.target.files[0])
+      await dispatch(profileAction.updateAvatar(token, form))
+      return dispatch(profileAction.getProfile(token))
+  }
 
   return (
     <React.Fragment>
@@ -144,13 +150,10 @@ export default function Profile() {
                   </Link>
                 </NavItem>
                 <NavItem className="nav-item">
-                    <Link to="/" onClick={onLogout}>
+                  <Link to="/" onClick={onLogout}>
                     <Media className="align-items-center">
-                      <Media
-                        left
-                        className="d-flex justify-content-center"
-                      >
-                      <FaSignOutAlt color="#8e8e8e" size={22} />
+                      <Media left className="d-flex justify-content-center">
+                        <FaSignOutAlt color="#8e8e8e" size={22} />
                       </Media>
                       <Media body className="ml-2">
                         Logout
@@ -249,16 +252,20 @@ export default function Profile() {
               </Col>
               <Col md={4}>
                 <Media className="flex-column align-items-center">
-                  <Media top>
+                  {/* <Media top>
                     <Media
-                      className="rounded-circle"
-                      src="https://via.placeholder.com/125"
+                      className="rounded-circle avatar-profile"
+                      src={avatar ? url + avatar : user}
                     />
-                  </Media>
+                  </Media> */}
+                  <div className="avatar-profile">
+                    <img src={avatar !== '' ? url + avatar : user} alt="avatar"/>
+                  </div>
                   <Media body>
                     <Label className="btn-success pl-3 pt-2 pb-2 pr-3 mt-3 rounded-pill">
                       <span>Select File</span>
                       <Input
+                      onChange={uploadImage}
                         style={{ display: "none" }}
                         type="file"
                         accept=".jpeg, .jpg, .png"
