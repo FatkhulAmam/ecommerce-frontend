@@ -33,7 +33,7 @@ const Address = () => {
   const { data, isLoading, isError, message } = useSelector(
     (state) => state.profile
   );
-  const url = "http://localhost:8180/";
+  const url = "http://54.172.55.29:8180/";
   const [avatar, setAvatar] = useState("");
   const [user_name, setName] = useState("");
 

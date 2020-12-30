@@ -27,7 +27,7 @@ const Cart = () => {
   }, [dispatch, token]);
   const cartIndex = useSelector((state) => state.product);
   const { isLoading, isError, dataCart } = cartIndex;
-  const url = "http://localhost:8180/";
+  const url = "http://54.172.55.29:8180/";
 
   return (
     <div>
