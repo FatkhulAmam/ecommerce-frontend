@@ -61,10 +61,17 @@ export default class AddProduct extends Component {
                 <Form onSubmit={this.handlerSubmit}>
                   <FormGroup row>
                     <Label for="input-name" md={2} sm={3}>
-                      Product Image:{" "}
+                      Pick Image:{" "}
                     </Label>
                     <Col>
-                      <img src={imgDef} alt="product-img" className="mb-3" />
+                      <Label>
+                        <img src={imgDef} alt="product-img" className="mb-3" />
+                        <Input
+                          style={{ display: "none" }}
+                          type="file"
+                          accept=".jpeg, .jpg, .png"
+                        />
+                      </Label>
                     </Col>
                   </FormGroup>
                   <FormGroup row>
