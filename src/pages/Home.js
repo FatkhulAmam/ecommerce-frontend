@@ -9,7 +9,7 @@ import {
   Col,
   Card,
   CardBody,
-  CardTitle,
+  CardTitle
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
@@ -17,7 +17,7 @@ import { Link } from "react-router-dom";
 import productAction from "../redux/actions/product";
 
 //import component
-import CardProduct from "../component/CardProduct"
+import CardProduct from "../component/CardProduct";
 
 // import asset image
 import carousel1 from "../assets/image/corou1.png";
@@ -29,6 +29,7 @@ const breakPoints = [
 ];
 
 class Home extends Component {
+
   componentDidMount() {
     this.props.getProduct();
     this.props.getCategory();

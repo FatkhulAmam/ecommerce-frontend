@@ -17,6 +17,16 @@
   width: 25px;
   height: 25px;
 }
+.btn-filter{
+  background-color: #fff;
+  border-color: #8e8e8e;
+}
+.btn-size{
+  width: 50px;
+}
+.btn-cat{
+  width: 120px;
+}
 
 /* cart style*/
 .cart-check{
