@@ -18,8 +18,6 @@ import NumberFormat from "react-number-format";
 //import component
 import CartCard from "../component/CartCard";
 
-import bgDefault from "../assets/image/bgProduct.png";
-
 const Cart = () => {
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");

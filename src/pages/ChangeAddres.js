@@ -43,7 +43,7 @@ const Address = (props) => {
     setAvatar(data[0].photo)
     dispatch(profileAction.getAddressById(token, id));
     setData(dataAddress)
-  }, [setData]);
+  },[data, dataAddress,dispatch, id, token]);
 
   const url = process.env.REACT_APP_BACKEND_URL;
   return (

@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { useSelector } from "react-redux";
 
 // import private root
 import PrivateRoot from "./component/privateRoute";
@@ -25,8 +24,6 @@ import AddProduct from "./pages/AddProduct";
 import Edit from "./pages/Edit";
 
 const App = () => {
-  const auth = useSelector((state) => state.auth);
-
   return (
     <BrowserRouter>
       <Switch>

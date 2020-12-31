@@ -79,11 +79,11 @@ class CategoryDetail extends Component {
               <h3 className="font-weight-bold">{dataDetail.name}</h3>
               <p>Toko Serba Punya</p>
               <Row>
-                <img className="star-detail ml-3" src={Star} />
-                <img className="star-detail" src={Star} />
-                <img className="star-detail" src={Star} />
-                <img className="star-detail" src={Star} />
-                <img className="star-detail mr-1" src={Star} />
+                <img className="star-detail ml-3" src={Star} alt="start_one"/>
+                <img className="star-detail" src={Star} alt="start_two" />
+                <img className="star-detail" src={Star} alt="start_three"/>
+                <img className="star-detail" src={Star} alt="start_four" />
+                <img className="star-detail mr-1" src={Star} alt="start_five"/>
                 <text className="star-detail-num">(10)</text>
               </Row>
               <h5>Harga</h5>

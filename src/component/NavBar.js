@@ -53,7 +53,6 @@ class NavSearchBar extends React.Component {
     this.props.searchAction(this.state.keyword);
   };
   render() {
-    const {photo} = this.props.profile
     const isLogin = localStorage.getItem("isLogin")
       ? localStorage.getItem("isLogin")
       : false;
