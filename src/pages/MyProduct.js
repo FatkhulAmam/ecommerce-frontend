@@ -71,7 +71,15 @@ export default class Product extends Component {
       <>
         <Navbar />
         <Container>
-          <h1 className="mt-3 mb-5 font-weight-bold">My Product</h1>
+          <div className="mt-3 mb-5 row">
+            <h1 className="mt-3 mb-5 font-weight-bold col-sm-10">My Product</h1>
+            <Button
+              className="col-sm-2 btn-sell-product bg-success d-flex align-items-center justify-content-center"
+              href="/add_product"
+            >
+              Sell Product
+            </Button>
+          </div>
           <Table>
             <thead>
               <tr>

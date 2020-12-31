@@ -144,9 +144,11 @@ export default function Profile() {
                       >
                         <img src={Clipbord} alt="clip" />
                       </Media>
+                  <Link to="/my_product">
                       <Media body className="ml-2">
-                        My Order
+                        My Product
                       </Media>
+                      </Link>
                     </Media>
                   </Link>
                 </NavItem>

@@ -12,6 +12,7 @@ import {
   Label,
   Input,
 } from "reactstrap";
+import imgDef from "../assets/image/bgProduct.png";
 
 export default class AddProduct extends Component {
   constructor(props) {
@@ -54,8 +55,18 @@ export default class AddProduct extends Component {
           <div className="mt-4">
             <Card>
               <CardBody>
-                <h3>My Product</h3>
+                <h3 className="mt-3 mb-3 font-weight-bold col-sm-10">
+                  My Product
+                </h3>
                 <Form onSubmit={this.handlerSubmit}>
+                  <FormGroup row>
+                    <Label for="input-name" md={2} sm={3}>
+                      Product Image:{" "}
+                    </Label>
+                    <Col>
+                      <img src={imgDef} alt="product-img" className="mb-3" />
+                    </Col>
+                  </FormGroup>
                   <FormGroup row>
                     <Label for="input-name" md={2} sm={3}>
                       Product:{" "}

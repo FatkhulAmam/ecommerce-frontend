@@ -228,3 +228,9 @@
   width: 200px;
   border-radius: 100px;
 }
+
+/*my product*/
+.btn-sell-product{
+  width: auto;
+  height: 50px;
+}
