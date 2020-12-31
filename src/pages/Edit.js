@@ -47,7 +47,7 @@ class Edit extends React.Component {
   handlerSubmit = async (event) => {
     event.preventDefault();
     await axios.put(
-      `http://54.172.55.29:8180/product/${this.state.id}`,
+      `http://localhost:8180/product/${this.state.id}`,
       qs.stringify({
         name: this.state.name,
         price: this.state.price,

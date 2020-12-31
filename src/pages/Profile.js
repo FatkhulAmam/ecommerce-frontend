@@ -32,7 +32,7 @@ export default function Profile() {
   const profileIndex = useSelector((state) => state.profile);
   const token = localStorage.getItem("token");
   const dispatch = useDispatch();
-  const url = "http://54.172.55.29:8180/";
+  const url = "http://localhost:8180/";
 
   const [modal, setModal] = useState(false);
   const modalOpen = () => setModal(!modal);

@@ -4,6 +4,7 @@ const initialState = {
   dataCart: [],
   dataCategory: [],
   categoryProduct: [],
+  totalPrice: [],
   isLoading: false,
   isError: false,
   alertMsg: "",
@@ -73,7 +74,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        dataCart: action.payload.data.data,
+        dataCart: action.payload.data,
       };
     }
     // add product to cart
@@ -96,6 +97,28 @@ export default (state = initialState, action) => {
         ...state,
         isLoading: false,
         message: "Add product to my cart"
+      };
+    }
+    // add product to cart
+    case "DEL_CAR_PENDING": {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+    case "DEL_CART_REJECTED": {
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+        alertMsg: "can't delete product data",
+      };
+    }
+    case "DEL_CART_FULFILLED": {
+      return {
+        ...state,
+        isLoading: false,
+        message: "delete product on my cart"
       };
     }
     // get category

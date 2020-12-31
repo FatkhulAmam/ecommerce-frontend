@@ -58,7 +58,7 @@ export default class Product extends Component {
   };
 
   deleteProduct = async (id) => {
-    await axios.delete(`http://54.172.55.29:8180/product/${id}`);
+    await axios.delete(`http://localhost:8180/product/${id}`);
     this.setState(
       {
         modalOpen: false,

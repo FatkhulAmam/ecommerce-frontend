@@ -22,6 +22,10 @@ export default {
     type: "ADD_CART",
     payload: http(token).post('cart', qs.stringify(product)),
   }),
+  deleteCart: (token, id) => ({
+    type: "DEL_CART",
+    payload: http(token).delete(`cart/${id}`),
+  }),
   getCategory: () => ({
     type: "GET_CATEGORY",
     payload: http().get('category'),

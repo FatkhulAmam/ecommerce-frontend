@@ -34,7 +34,7 @@ class Home extends Component {
     this.props.getCategory();
   }
   render() {
-    const url = "http://54.172.55.29:8180/";
+    const url = "http://localhost:8180/";
     const {
       isLoading,
       data,

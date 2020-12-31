@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../component/NavBar";
 import "../assets/style/style.css";
 import CartAction from "../redux/actions/product";
+import NumberFormat from "react-number-format";
 
 //import component
 import CartCard from "../component/CartCard";
@@ -41,16 +42,19 @@ const Cart = () => {
                 <CardBody className="ml-3 row">
                   <Input type="checkbox" />
                   <p className="col-sm-11">Select All item</p>
-                  <a href="/cart" className="text-danger"> delete</a>
+                  <a href="/cart" className="text-danger">
+                    {" "}
+                    delete
+                  </a>
                 </CardBody>
               </Card>
               {!isLoading &&
                 !isError &&
                 dataCart.length !== 0 &&
-                dataCart.map((item) => {
+                dataCart.data.map((item) => {
                   return (
                     <CartCard
-                      productId={item.id}
+                      cartId={item.id}
                       productName={item.name}
                       productCategory={item.category_name}
                       productPrice={item.price}
@@ -64,10 +68,19 @@ const Cart = () => {
                 <CardBody>
                   <CardTitle>Shopping summary</CardTitle>
                   <div className="row mb-5">
-                    <CardSubtitle className="col-sm-10">Total Harga</CardSubtitle>
-                    <p className="text-danger">price</p>
+                    <CardSubtitle className="col-sm-7">
+                      Total Harga
+                    </CardSubtitle>
+                    <p className="text-danger col-sm-5 row justify-content-end">
+                      <NumberFormat
+                        value={dataCart.sumPrice}
+                        displayType={"text"}
+                        thousandSeparator={true}
+                        prefix={"Rp. "}
+                      />
+                    </p>
                   </div>
-                  <Button className="btn-buy rounded-pill">Buy</Button>
+                  <Button className="btn-buy bg-success rounded-pill">Buy</Button>
                 </CardBody>
               </Card>
             </div>

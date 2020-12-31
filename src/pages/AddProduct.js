@@ -34,7 +34,7 @@ export default class AddProduct extends Component {
   handlerSubmit = async (event) => {
     event.preventDefault();
     await axios.post(
-      `http://54.172.55.29:8180/product/`,
+      `http://localhost:8180/product/`,
       qs.stringify({
         name: this.state.name,
         price: this.state.price,
