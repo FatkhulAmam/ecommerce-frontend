@@ -3,25 +3,18 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import {
   Container,
-  Row,
-  Col,
-  Card,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
-  CardImg,
+  Table,
   Modal,
   ModalBody,
   ModalFooter,
   Button,
+  Pagination,
+  PaginationItem,
+  PaginationLink,
 } from "reactstrap";
 import "../assets/style/style.css";
 
 import Navbar from "../component/NavBar";
-
-import bgProduct from "../assets/image/bgProduct.png";
-// import product from '../redux/actions/product';
-
 export default class Product extends Component {
   constructor(props) {
     super(props);
@@ -78,30 +71,35 @@ export default class Product extends Component {
       <>
         <Navbar />
         <Container>
-          <Row>
+          <h1 className="mt-3 mb-5 font-weight-bold">My Product</h1>
+          <Table>
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Product Name</th>
+                <th>Action</th>
+              </tr>
+            </thead>
             {Object.keys(data).length &&
               data.data.map((item) => (
-                <Col className="mt-4">
-                  <Card className="card-home shadow-sm">
-                    <CardImg className="default-img" src={bgProduct} />
-                    <CardBody>
-                      <CardTitle>
-                        <h5>{item.name}</h5>
-                      </CardTitle>
-                      <CardSubtitle className="text-danger mb-2">
-                        {item.price}
-                      </CardSubtitle>
-                      <CardSubtitle>
-                        <h6>{item.category_name}</h6>
-                      </CardSubtitle>
-                      <Button onClick={() => this.detailProduct(item.id)}>
-                        detail
-                      </Button>
-                    </CardBody>
-                  </Card>
-                </Col>
+                <>
+                  <tbody>
+                    <tr>
+                      <th scope="row">{item.id}</th>
+                      <td>{item.name}</td>
+                      <td>
+                        <Button
+                          className="bg-success"
+                          onClick={() => this.detailProduct(item.id)}
+                        >
+                          Detail
+                        </Button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </>
               ))}
-          </Row>
+          </Table>
           <Modal isOpen={modalOpen}>
             <ModalBody>
               <div className="h2">{Product.name}</div>
@@ -125,6 +123,37 @@ export default class Product extends Component {
             </ModalFooter>
           </Modal>
         </Container>
+        <div className="row justify-content-center">
+          <Pagination aria-label="Page navigation example">
+            <PaginationItem>
+              <PaginationLink first href="#" />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink previous href="#" />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">1</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">2</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">3</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">4</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink href="#">5</PaginationLink>
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink next href="#" />
+            </PaginationItem>
+            <PaginationItem>
+              <PaginationLink last href="#" />
+            </PaginationItem>
+          </Pagination>
+        </div>
       </>
     );
   }
