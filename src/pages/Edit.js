@@ -45,9 +45,10 @@ class Edit extends React.Component {
   };
 
   handlerSubmit = async (event) => {
+    const url = process.env.REACT_APP_BACKEND_URL;
     event.preventDefault();
     await axios.put(
-      `http://localhost:8180/product/${this.state.id}`,
+      `${url}product/${this.state.id}`,
       qs.stringify({
         name: this.state.name,
         price: this.state.price,

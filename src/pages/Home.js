@@ -34,7 +34,7 @@ class Home extends Component {
     this.props.getCategory();
   }
   render() {
-    const url = "http://localhost:8180/";
+    const url = process.env.REACT_APP_BACKEND_URL;
     const {
       isLoading,
       data,
@@ -42,7 +42,6 @@ class Home extends Component {
       alertMsg,
       dataCategory,
     } = this.props.product;
-    
     return (
       <>
         <Navbar />

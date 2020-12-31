@@ -28,7 +28,7 @@ const Cart = () => {
   }, [dispatch, token]);
   const cartIndex = useSelector((state) => state.product);
   const { isLoading, isError, dataCart } = cartIndex;
-  const url = "http://54.172.55.29:8180/";
+  const url = process.env.REACT_APP_BACKEND_URL;
 
   return (
     <div>

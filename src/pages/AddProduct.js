@@ -32,9 +32,10 @@ export default class AddProduct extends Component {
   };
 
   handlerSubmit = async (event) => {
+    const url = process.env.REACT_APP_BACKEND_URL;
     event.preventDefault();
     await axios.post(
-      `http://localhost:8180/product/`,
+      `${url}product/`,
       qs.stringify({
         name: this.state.name,
         price: this.state.price,

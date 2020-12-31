@@ -33,7 +33,6 @@ const Address = () => {
   const { data, isLoading, isError, message } = useSelector(
     (state) => state.profile
   );
-  const url = "http://localhost:8180/";
   const [avatar, setAvatar] = useState("");
   const [user_name, setName] = useState("");
 
@@ -72,6 +71,8 @@ const Address = () => {
   const onLogout = () => {
     localStorage.clear();
   };
+
+  const url = process.env.REACT_APP_BACKEND_URL;
 
   return (
     <React.Fragment>

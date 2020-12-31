@@ -32,7 +32,6 @@ export default function Profile() {
   const profileIndex = useSelector((state) => state.profile);
   const token = localStorage.getItem("token");
   const dispatch = useDispatch();
-  const url = "http://localhost:8180/";
 
   const [modal, setModal] = useState(false);
   const modalOpen = () => setModal(!modal);
@@ -79,6 +78,8 @@ export default function Profile() {
       await dispatch(profileAction.updateAvatar(token, form))
       return dispatch(profileAction.getProfile(token))
   }
+  
+  const url = process.env.REACT_APP_BACKEND_URL;
 
   return (
     <React.Fragment>

@@ -23,7 +23,7 @@ class CategoryDetail extends Component {
   }
 
   render() {
-    const url = "http://localhost:8180/";
+    const url = process.env.REACT_APP_BACKEND_URL;
     const {
       isLoading,
       categoryProduct,

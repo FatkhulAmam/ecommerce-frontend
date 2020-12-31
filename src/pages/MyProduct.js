@@ -48,17 +48,20 @@ export default class Product extends Component {
   }
 
   getData = async () => {
-    const { data } = await axios.get("http://54.172.55.29:8180/product");
+    const url = process.env.REACT_APP_BACKEND_URL;
+    const { data } = await axios.get(`${url}product`);
     this.setState({ data });
   };
 
   detailProduct = async (id) => {
-    const { data } = await axios.get(`http://54.172.55.29:8180/product/${id}`);
+    const url = process.env.REACT_APP_BACKEND_URL;
+    const { data } = await axios.get(`${url}product/${id}`);
     this.setState({ modalOpen: true, Product: data.data }, () => {});
   };
 
   deleteProduct = async (id) => {
-    await axios.delete(`http://localhost:8180/product/${id}`);
+    const url = process.env.REACT_APP_BACKEND_URL;
+    await axios.delete(`${url}product/${id}`);
     this.setState(
       {
         modalOpen: false,
