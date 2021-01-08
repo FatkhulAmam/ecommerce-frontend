@@ -28,12 +28,12 @@ import profileAction from "../redux/actions/profile";
 import user from "../assets/image/avatar.png";
 
 const Address = (props) => {
-  const { data, isLoading, isError, message, dataAddress } = useSelector(
+  const { data, isLoading, isError, message, dataAddress, dataAddressById } = useSelector(
     (state) => state.profile
   );
   const [avatar, setAvatar] = useState("");
-  const [user_name, setUserName] = useState("");
-  const [adres, setData] = useState('')
+  const [user_name, setUserName] = useState("")
+  const [recipientName, setRecipientName] = useState('')
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
   const id = props.match.params.id;
@@ -41,13 +41,15 @@ const Address = (props) => {
   useEffect(() => {
     setUserName(data[0].user_name);
     setAvatar(data[0].photo)
-    dispatch(profileAction.getAddressById(token, id));
-    setData(dataAddress)
+    // dispatch(profileAction.getAddressById(token, id));
+    // setRecipientName(dataAddressById.recipients_name)
   },[data, dataAddress,dispatch, id, token]);
 
   const url = process.env.REACT_APP_BACKEND_URL;
   return (
     <React.Fragment>
+      {
+    dispatch(profileAction.getAddressById(token, id))}
       <Navbar />
       <div className="d-flex">
         <div className="sidebar">
@@ -177,9 +179,8 @@ const Address = (props) => {
             <Input type="text" value="maamam" />
             <div className="row justify-content-center">
               <div className="col">
-                {console.log(adres)}
                 <label className="text-muted small">Recipient's Name</label>
-                <Input type="text" />
+                <Input type="text" value={recipientName}/>
               </div>
               <div className="col">
                 <label className="text-muted small">

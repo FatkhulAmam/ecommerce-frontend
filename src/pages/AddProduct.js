@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Navbar from "../component/NavBar";
-import axios from "axios";
-import qs from "querystring";
+import http from "../helpers/http";
 import {
   Container,
   Card,
@@ -11,8 +10,10 @@ import {
   FormGroup,
   Label,
   Input,
+  Button,
 } from "reactstrap";
 import imgDef from "../assets/image/bgProduct.png";
+import productAction from "../redux/actions/product";
 
 export default class AddProduct extends Component {
   constructor(props) {
@@ -33,18 +34,15 @@ export default class AddProduct extends Component {
   };
 
   handlerSubmit = async (event) => {
-    const url = process.env.REACT_APP_BACKEND_URL;
+    const token = localStorage.getItem("token")
     event.preventDefault();
-    await axios.post(
-      `${url}product/`,
-      qs.stringify({
-        name: this.state.name,
-        price: this.state.price,
-        category: this.state.category,
-        description: this.state.description,
-      })
-    );
-    this.props.history.push("/my_product");
+    const form = new FormData();
+    form.append("name", this.state.name);
+    form.append("price", this.state.price);
+    form.append("category", this.state.category);
+    form.append("description", this.state.description);
+    await productAction.addProduct(token, form)
+    console.log(form);
   };
 
   render() {
@@ -58,7 +56,7 @@ export default class AddProduct extends Component {
                 <h3 className="mt-3 mb-3 font-weight-bold col-sm-10">
                   My Product
                 </h3>
-                <Form onSubmit={this.handlerSubmit}>
+                <Form>
                   <FormGroup row>
                     <Label for="input-name" md={2} sm={3}>
                       Pick Image:{" "}
@@ -134,11 +132,11 @@ export default class AddProduct extends Component {
                   <FormGroup row>
                     <Col md={10}></Col>
                     <Col md={2}>
-                      <Input
-                        type="submit"
+                      <Button
+                        onClick={this.handlerSubmit}
                         value="add"
                         className="btn btn-success"
-                      ></Input>
+                      />
                     </Col>
                   </FormGroup>
                 </Form>

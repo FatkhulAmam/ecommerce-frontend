@@ -165,6 +165,28 @@ export default (state = initialState, action) => {
         categoryProduct: action.payload.data.data,
       };
     }
+    // add product
+    case "ADD_PRODUCT_PENDING": {
+      return {
+        ...state,
+        isLoading: true,
+      };
+    }
+    case "ADD_PRODUCT_REJECTED": {
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+        alertMsg: "Cannot add data",
+      };
+    }
+    case "ADD_PRODUCT_FULFILLED": {
+      return {
+        ...state,
+        isLoading: false,
+        alertMsg: "add data succesfully",
+      };
+    }
     default: {
       return state;
     }

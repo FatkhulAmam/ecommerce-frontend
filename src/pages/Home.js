@@ -70,10 +70,13 @@ class Home extends Component {
                   <Link to={`/category/product/${item.id}`}>
                     <Col>
                       <Card className="category-card mb-5">
-                        <CardBody className="flex justify-content-center align-item-center">
-                          <CardTitle>
-                            <h3>{item.category_name}</h3>
-                          </CardTitle>
+                        <CardBody className="d-flex justify-content-center align-item-center">
+                          <div  className="position-relative">
+                            <img src={url + item.photo}/>
+                            </div>
+                            <div className="position-absolute">
+                            <h3 className="card-title font-weight-bold">{item.category_name}</h3>
+                          </div>
                         </CardBody>
                       </Card>
                     </Col>

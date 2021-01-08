@@ -6,6 +6,10 @@ export default {
     type: "GET_DATA",
     payload: http().get("product/?sort[input_date]=desc"),
   }),
+  addProduct: (token, product) => ({
+    type: "ADD_PRODUCT",
+    payload: http(token).get("product/", product),
+  }),
   searchData: (keyword) => ({
     type: "GET_DATA",
     payload: http().get(`product?search[name]=${keyword}`),

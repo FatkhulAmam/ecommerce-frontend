@@ -1,7 +1,7 @@
 /* navigasi style */
 .btn-nav{
     width: 100px;
-    background-color: #00ff00;
+    background-color: #32C33B;
     border: none;
 }
 .search-box{
@@ -58,21 +58,25 @@
 /* style home */
 .btn-custommer, .btn-seller, .btn-auth{
     background-color: white;
-    border-color: #00ff00;
-    color: #00ff00;
+    border-color: #32C33B;
+    color: #32C33B;
 }
 .btn-custommer:focus{
-    background-color: #00ff00;
-    border-color: #00ff00
+    background-color: #32C33B;
+    border-color: #32C33B
 }
 .btn:hover{
-    background-color: #00ff00;
-    border-color: #00ff00
+    background-color: #32C33B;
+    border-color: #32C33B
 }
 .card-home{
     margin-left: -10px;
     width: 200px;
     height: 300px;
+}
+.card-title{
+  color: #fff;
+  margin-top: 50px;
 }
 .default-img{
     margin-bottom: -10px;
@@ -91,7 +95,7 @@
   width: 178px;
   height: 178px;
   margin: 10px;
-  background-color: rgb(98, 255, 50);
+  background-color: rgb(50, 195, 59);
 }
 .modalBtn{
   width: 50px;
@@ -143,14 +147,14 @@
     height: 40px;
     width: 150px;
     background-color: #fff;
-    color: #00ff00;
-    border-color: #00ff00;
+    color: #32C33B;
+    border-color: #32C33B;
 }
 .btn-buy-now{
     width: 300px;
     height: 40px;
-    background-color: #00ff00;
-    border-color: #00ff00;
+    background-color: #32C33B;
+    border-color: #32C33B;
 }
 .btn-color{
   width: 50px;
