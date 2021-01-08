@@ -46,7 +46,7 @@ export default function Profile() {
     if (data.length) {
       setName(data[0].user_name);
       setEmail(data[0].email);
-      setPhone(data[0].phone);
+      setPhone(`0${data[0].phone}`);
       setGender(data[0].gender);
       setBirth(data[0].birth);
       setAvatar(data[0].photo);

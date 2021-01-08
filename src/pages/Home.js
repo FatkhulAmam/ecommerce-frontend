@@ -75,7 +75,7 @@ class Home extends Component {
                             <img src={url + item.photo}/>
                             </div>
                             <div className="position-absolute">
-                            <h3 className="card-title font-weight-bold">{item.category_name}</h3>
+                            <h3 className="card-title-category font-weight-bold">{item.category_name}</h3>
                           </div>
                         </CardBody>
                       </Card>
