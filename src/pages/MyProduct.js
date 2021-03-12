@@ -37,6 +37,7 @@ export default class Product extends Component {
   };
 
   async componentDidMount() {
+    document.title= 'My Product Belanja Online'
     await this.getData();
   }
 

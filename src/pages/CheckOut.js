@@ -19,6 +19,11 @@ export default class CheckOut extends Component {
     this.state = {};
   }
 
+  componentDidMount() {
+    document.title= 'Check Out Belanja Online'
+  }
+  
+
   render() {
     return (
       <div>

@@ -40,6 +40,7 @@ class Register extends React.Component {
     this.setState({ [e.target.name]: e.target.value });
   };
   componentDidMount() {
+    document.title= 'Login Belanja Online'
     console.log(this.props.registerData);
   }
 

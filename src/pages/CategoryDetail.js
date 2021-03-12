@@ -18,6 +18,7 @@ class CategoryDetail extends Component {
     this.state = {};
   }
   componentDidMount() {
+    document.title= 'Belanja Online'
     const id = this.props.match.params.id
     this.props.getCategoryDetail(id);
   }

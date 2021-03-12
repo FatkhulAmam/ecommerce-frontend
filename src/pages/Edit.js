@@ -26,6 +26,7 @@ class Edit extends React.Component {
   }
 
   componentDidMount = async () => {
+    document.title= 'Edit Product Belanja Online'
     const id = this.props.match.params.id;
     const res = await axios.get(`http://localhost:8180/product/${id}`);
 

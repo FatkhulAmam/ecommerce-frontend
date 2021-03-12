@@ -22,6 +22,10 @@ class login extends React.Component {
     email: "",
     password: "",
   };
+  componentDidMount() {
+    document.title= 'Login Belanja Online'
+  }
+  
   login = async (e) => {
     e.preventDefault();
     const { email, password } = this.state;

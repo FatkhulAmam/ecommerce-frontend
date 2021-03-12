@@ -22,6 +22,7 @@ const Cart = () => {
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
   useEffect(() => {
+    document.title= 'My Bag Belanja Online'
     dispatch(CartAction.getCart(token));
   }, [dispatch, token]);
   const cartIndex = useSelector((state) => state.product);

@@ -43,6 +43,7 @@ export default function Profile() {
   const [avatar, setAvatar] = useState("");
 
   useEffect(() => {
+    document.title= 'User Profile Belanja Online'
     if (data.length) {
       setName(data[0].user_name);
       setEmail(data[0].email);

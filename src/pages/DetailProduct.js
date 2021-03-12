@@ -23,6 +23,7 @@ class CategoryDetail extends Component {
   }
   modalOpen = () => this.setState(!this.state.modal);
   componentDidMount() {
+    document.title= 'Detail Belanja Online'
     const id = this.props.match.params.id;
     this.props.getDetail(id);
   }

@@ -27,6 +27,11 @@ export default class AddProduct extends Component {
     };
   }
 
+  componentDidMount() {
+    document.title= 'Sell Product Belanja Online'
+  }
+  
+
   handlerChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,

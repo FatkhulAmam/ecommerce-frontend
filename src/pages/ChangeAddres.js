@@ -39,6 +39,7 @@ const Address = (props) => {
   const id = props.match.params.id;
 
   useEffect(() => {
+    document.title= 'Address Change Belanja Online'
     setUserName(data[0].user_name);
     setAvatar(data[0].photo)
     // dispatch(profileAction.getAddressById(token, id));

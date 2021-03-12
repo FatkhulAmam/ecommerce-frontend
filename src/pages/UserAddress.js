@@ -46,6 +46,7 @@ const Address = () => {
   const [postalCode, setPostalCode] = useState("");
 
   useEffect(() => {
+    document.title= 'User Address Blanja Online'
     dispatch(profileAction.getAddress(token));
     if (data.length) {
       setName(data[0].user_name);

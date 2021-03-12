@@ -31,6 +31,7 @@ const breakPoints = [
 class Home extends Component {
 
   componentDidMount() {
+    document.title= 'Belanja Online'
     this.props.getProduct();
     this.props.getCategory();
   }
@@ -45,6 +46,7 @@ class Home extends Component {
     } = this.props.product;
     return (
       <>
+      <link rel='icon' href='../assets/image/webIcon.png'/>
         <Navbar />
         <div className="mt-3">
           <Carousel breakPoints={breakPoints}>
