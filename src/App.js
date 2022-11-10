@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // import private root
 import PrivateRoot from "./component/privateRoute";
@@ -26,7 +26,7 @@ import Edit from "./pages/Edit";
 const App = () => {
   return (
     <BrowserRouter>
-      <Switch>
+      <Routes>
         <Route path="/" component={Home} exact />
         <Route path="/signup" component={Signup} />
         <Route path="/login" render={(props) => <Login {...props} />} />
@@ -61,7 +61,7 @@ const App = () => {
           component={(props) => <AddProduct {...props} />}
         />
         <Route path="/edit/:id" component={(props) => <Edit {...props} />} />
-      </Switch>
+      </Routes>
     </BrowserRouter>
   );
 };

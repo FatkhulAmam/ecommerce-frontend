@@ -9,9 +9,9 @@ import {
   Col,
   Card,
   CardBody,
-  CardTitle
 } from "reactstrap";
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 // import redux
 import productAction from "../redux/actions/product";
@@ -29,6 +29,13 @@ const breakPoints = [
 ];
 
 class Home extends Component {
+  static get propTypes(){
+    return {
+      getProduct: PropTypes.func,
+      product: PropTypes.object,
+      getCategory: PropTypes.func,
+    }; 
+  }
 
   componentDidMount() {
     document.title= 'Belanja Online'
@@ -69,7 +76,7 @@ class Home extends Component {
               dataCategory.length !== 0 &&
               dataCategory.map((item) => {
                 return (
-                  <Link to={`/category/product/${item.id}`}>
+                  <Link key={1} to={`/category/product/${item.id}`}>
                     <Col>
                       <Card className="category-card mb-5">
                         <CardBody className="d-flex justify-content-center align-item-center">
@@ -95,6 +102,7 @@ class Home extends Component {
               data.map((item) => {
                 return (
                   <CardProduct
+                    key={item.id}
                     productId={item.id}
                     productName={item.name}
                     productCategory={item.category_name}

@@ -2,7 +2,8 @@ import React, { Component } from "react";
 import { Container, Row, Button, Modal, ModalBody } from "reactstrap";
 import { connect } from "react-redux";
 import Navbar from "../component/NavBar";
-import NumberFormat from "react-number-format";
+import {NumericFormat} from "react-number-format";
+import PropTypes from 'prop-types';
 
 import bgDefault from "../assets/image/bgProduct.png";
 import Star from "../assets/image/star.png";
@@ -13,6 +14,14 @@ import CardProduct from "../component/CardProduct"
 // import redux
 import productAction from "../redux/actions/product";
 class CategoryDetail extends Component {
+  static get propTypes(){
+    return {
+      match: PropTypes.object,
+      getDetail: PropTypes.func,
+      addToCart: PropTypes.func,
+      product: PropTypes.object,
+    }; 
+  }
   constructor(props) {
     super(props);
     this.state = {
@@ -89,7 +98,7 @@ class CategoryDetail extends Component {
               </Row>
               <h5>Harga</h5>
               <h4 className="price-tag font-weight-bold">
-                <NumberFormat
+                <NumericFormat
                   value={dataDetail.price}
                   displayType={"text"}
                   thousandSeparator={true}

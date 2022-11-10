@@ -6,13 +6,20 @@ import {
   Container,
   Row,
 } from "reactstrap";
-// import redux
+import PropTypes from 'prop-types';
 import productAction from "../redux/actions/product";
 
 //import component
 import CardProduct from "../component/CardProduct"
 
 class CategoryDetail extends Component {
+  static get propTypes(){
+    return {
+      match: PropTypes.string,
+      getCategoryDetail: PropTypes.func,
+      product: PropTypes.object,
+    }; 
+  }
   constructor(props) {
     super(props);
     this.state = {};
@@ -41,6 +48,7 @@ class CategoryDetail extends Component {
               categoryProduct.map((item) => {
                 return (
                   <CardProduct
+                    key={item.id}
                     productId={item.id}
                     productName={item.name}
                     productCategory={item.category_name}

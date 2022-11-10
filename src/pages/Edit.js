@@ -1,7 +1,8 @@
 import React from "react";
 import Navbar from "../component/NavigationBar";
 import axios from "axios";
-import qs from "querystring";
+import qs from "query-string";
+import PropTypes from 'prop-types';
 import {
   Container,
   Card,
@@ -14,6 +15,12 @@ import {
 } from "reactstrap";
 
 class Edit extends React.Component {
+  static get propTypes(){
+    return {
+      match: PropTypes.object,
+      history: PropTypes.object,
+    }; 
+  }
   constructor(props) {
     super(props);
     this.state = {
@@ -26,7 +33,7 @@ class Edit extends React.Component {
   }
 
   componentDidMount = async () => {
-    document.title= 'Edit Product Belanja Online'
+    document.title= "Edit Product Belanja Online"
     const id = this.props.match.params.id;
     const res = await axios.get(`http://localhost:8180/product/${id}`);
 

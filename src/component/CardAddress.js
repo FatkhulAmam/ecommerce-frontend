@@ -4,9 +4,20 @@ import {
   CardTitle,
   CardText,
 } from "reactstrap";
+import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 
 class CardAddress extends Component {
+  static get propTypes() { 
+    return { 
+      addressId: PropTypes.string, 
+      userName: PropTypes.string,
+      userAddress: PropTypes.string, 
+      userHome: PropTypes.string ,
+      postalCode: PropTypes.string, 
+      userPhone: PropTypes.string 
+    }; 
+  }
   render() {
     const {
       addressId,

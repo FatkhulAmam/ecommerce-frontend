@@ -1,12 +1,18 @@
 import React, { Component } from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { connect } from "react-redux";
+import PropTypes from 'prop-types';
 
 class PrivateRoute extends Component {
+  static get propTypes(){
+    return {
+      children: PropTypes.string
+    }; 
+  }
   render() {
     const isLogin = (localStorage.getItem("isLogin") ? localStorage.getItem("isLogin") : false)
     return (
-      <Route
+      <Navigate
         render={(props) => {
           const childWithProps = React.Children.map(
             this.props.children,
@@ -21,7 +27,7 @@ class PrivateRoute extends Component {
             return childWithProps;
           } else {
             return (
-              <Redirect
+              <Navigate
                 to={{
                   pathname: "/login",
                   state: { alert: "Login first!", color: "danger" },

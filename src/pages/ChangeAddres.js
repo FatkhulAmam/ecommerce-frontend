@@ -18,6 +18,7 @@ import { FaPencilAlt, FaSignOutAlt } from "react-icons/fa";
 
 import Navbar from "../component/NavBar";
 import CardAddress from "../component/CardAddress";
+import PropTypes from 'prop-types';
 //import style
 import "../assets/style/style.css";
 // import image
@@ -28,12 +29,12 @@ import profileAction from "../redux/actions/profile";
 import user from "../assets/image/avatar.png";
 
 const Address = (props) => {
-  const { data, isLoading, isError, message, dataAddress, dataAddressById } = useSelector(
+  const { data, isLoading, isError, message, dataAddress } = useSelector(
     (state) => state.profile
   );
   const [avatar, setAvatar] = useState("");
   const [user_name, setUserName] = useState("")
-  const [recipientName, setRecipientName] = useState('')
+  const [recipientName] = useState('')
   const dispatch = useDispatch();
   const token = localStorage.getItem("token");
   const id = props.match.params.id;
@@ -134,7 +135,7 @@ const Address = (props) => {
             </div>
           </aside>
         </div>
-        <div className="d-flex content p-5" sm="9">
+        <div className="d-flex content p-5">
           <div className="profile-edit shadow p-3 ">
             <div className="heading h3 font-weight-bold">
               Choose Another Address
@@ -153,6 +154,7 @@ const Address = (props) => {
                 dataAddress.map((item) => {
                   return (
                     <CardAddress
+                      key={item.id}
                       addressId={item.id}
                       userName={item.recipients_name}
                       userAddress={item.address}
@@ -180,12 +182,12 @@ const Address = (props) => {
             <Input type="text" value="maamam" />
             <div className="row justify-content-center">
               <div className="col">
-                <label className="text-muted small">Recipient's Name</label>
+                <label className="text-muted small">Recipient Name</label>
                 <Input type="text" value={recipientName}/>
               </div>
               <div className="col">
                 <label className="text-muted small">
-                  Recipient's Telphone Number
+                  Recipient Telphone Number
                 </label>
                 <Input type="number" />
               </div>
@@ -217,6 +219,10 @@ const Address = (props) => {
       </div>
     </React.Fragment>
   );
+};
+
+Address.propTypes = {
+  match: PropTypes.any,
 };
 
 export default Address

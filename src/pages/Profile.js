@@ -169,7 +169,7 @@ export default function Profile() {
             </div>
           </aside>
         </div>
-        <div className="d-flex content p-5" sm="9">
+        <div className="d-flex content p-5">
           <div className="profile-edit shadow p-3">
             <div className="heading h3 font-weight-bold">My profile</div>
             <div className="text-muted small">
@@ -217,7 +217,7 @@ export default function Profile() {
                     <div className="pl-3">
                       {["male", "female"].map((item, index) => {
                         return (
-                          <Label className={index === 0 ? "ml-1" : "ml-5"}>
+                          <Label key={1} className={index === 0 ? "ml-1" : "ml-5"}>
                             <Input
                               onChange={() => setGender(item)}
                               name="gender"

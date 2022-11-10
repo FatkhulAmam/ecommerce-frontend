@@ -10,6 +10,7 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import PropTypes from 'prop-types';
 import "../assets/style/style.css";
 
 import logo from "../assets/image/logo.svg";
@@ -18,6 +19,13 @@ import logo from "../assets/image/logo.svg";
 import auth from "../redux/actions/auth";
 
 class login extends React.Component {
+  static get propTypes(){
+    return {
+      login: PropTypes.func,
+      auth: PropTypes.object,
+      history: PropTypes.object,
+    }; 
+  }
   state = {
     email: "",
     password: "",

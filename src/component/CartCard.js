@@ -7,12 +7,22 @@ import {
   Button,
   Input,
 } from "reactstrap";
-import NumberFormat from "react-number-format";
+import PropTypes from 'prop-types';
+import {NumericFormat} from "react-number-format";
 import "../assets/style/style.css";
 import { connect } from "react-redux";
 import productAction from "../redux/actions/product";
 
 class CartCard extends Component {
+  static get propTypes() { 
+    return { 
+      cartId: PropTypes.string, 
+      productPrice: PropTypes.string,
+      productName: PropTypes.string, 
+      productImage: PropTypes.string ,
+      deleteCart: PropTypes.func, 
+    }; 
+  }
   render() {
     const token = localStorage.getItem("token");
     return (
@@ -39,9 +49,9 @@ class CartCard extends Component {
               <p className="counter-txt">1</p>
               <Button className="btn-min rounded-circle">-</Button>
             </div>
-            <div classname="col-sm">
+            <div className="col-sm">
               <p className="text-danger mr-2">
-                <NumberFormat
+                <NumericFormat
                   value={this.props.productPrice}
                   displayType={"text"}
                   thousandSeparator={true}

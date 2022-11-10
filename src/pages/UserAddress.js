@@ -160,7 +160,7 @@ const Address = () => {
             </div>
           </aside>
         </div>
-        <div className="d-flex content p-5" sm="9">
+        <div className="d-flex content p-5">
           <div className="profile-edit shadow p-3 ">
             <div className="heading h3 font-weight-bold">
               Choose Another Address
@@ -182,6 +182,7 @@ const Address = () => {
                 dataAddress.map((item) => {
                   return (
                     <CardAddress
+                      key={item.id}
                       addressId={item.id}
                       userName={item.recipients_name}
                       userAddress={item.address}
@@ -209,7 +210,7 @@ const Address = () => {
             <Input onChange={(e) => setHome(e.target.value)} type="text" />
             <div className="row justify-content-center">
               <div className="col">
-                <label className="text-muted small">Recipient's Name</label>
+                <label className="text-muted small">Recipient Name</label>
                 <Input
                   onChange={(e) => setRecipientName(e.target.value)}
                   type="text"
@@ -217,7 +218,7 @@ const Address = () => {
               </div>
               <div className="col">
                 <label className="text-muted small">
-                  Recipient's Telphone Number
+                  Recipient Telphone Number
                 </label>
                 <Input
                   onChange={(e) => setRecipientPhone(e.target.value)}

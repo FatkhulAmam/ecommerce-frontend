@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Navbar from "../component/NavBar";
 import "../assets/style/style.css";
 import CartAction from "../redux/actions/product";
-import NumberFormat from "react-number-format";
+import {NumericFormat} from "react-number-format";
 
 //import component
 import CartCard from "../component/CartCard";
@@ -53,6 +53,7 @@ const Cart = () => {
                 dataCart.data.map((item) => {
                   return (
                     <CartCard
+                      key={item.id}
                       cartId={item.id}
                       productName={item.name}
                       productCategory={item.category_name}
@@ -71,7 +72,7 @@ const Cart = () => {
                       Total Harga
                     </CardSubtitle>
                     <p className="text-danger col-sm-5 row justify-content-end">
-                      <NumberFormat
+                      <NumericFormat
                         value={dataCart.sumPrice}
                         displayType={"text"}
                         thousandSeparator={true}

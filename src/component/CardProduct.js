@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import NumberFormat from "react-number-format";
+import { NumericFormat } from 'react-number-format';
 import "../assets/style/style.css";
 import {
   Row,
@@ -10,10 +10,20 @@ import {
   CardSubtitle,
   CardImg,
 } from "reactstrap";
+import PropTypes from 'prop-types';
 import { Link } from "react-router-dom";
 import Star from  "../assets/image/star.png"; 
 
 export default class CardProduct extends Component {
+  static get propTypes() { 
+    return { 
+      productId: PropTypes.string, 
+      productImage: PropTypes.string,
+      productName: PropTypes.string, 
+      productCategory: PropTypes.string ,
+      productPrice: PropTypes.string, 
+    }; 
+  }
   render() {
     return (
       <div>
@@ -28,7 +38,7 @@ export default class CardProduct extends Component {
                   </text>
                 </CardTitle>
                 <CardSubtitle className="text-danger mb-2">
-                  <NumberFormat
+                  <NumericFormat
                     value={this.props.productPrice}
                     displayType={"text"}
                     thousandSeparator={true}

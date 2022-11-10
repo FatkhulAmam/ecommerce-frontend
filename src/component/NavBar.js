@@ -22,6 +22,7 @@ import {
   DropdownToggle,
 } from "reactstrap";
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 // import style
 import "../assets/style/style.css";
@@ -40,6 +41,12 @@ import bell from "../assets/image/bell.svg";
 import user from "../assets/image/avatar.png";
 
 class NavSearchBar extends React.Component {
+  static get propTypes() { 
+    return {
+      searchAction: PropTypes.func, 
+      dropdownOpen: PropTypes.func,
+    }; 
+  }
   constructor(props) {
     super(props);
     this.state = {
@@ -49,11 +56,11 @@ class NavSearchBar extends React.Component {
       dropdownOpen: false,
     };
   }
-  componentWillMount() {
-    const token = localStorage.getItem("token");
-    this.props.getProfileData(token);
-    this.props.getAddressData(token);
-  }
+  // componentWillMount() {
+  //   const token = localStorage.getItem("token");
+  //   this.props.getProfileData(token);
+  //   this.props.getAddressData(token);
+  // }
 
   modalOpen = () => {
     this.setState({ modal: !this.state.modal });

@@ -10,6 +10,7 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import PropTypes from 'prop-types';
 
 import "../assets/style/style.css";
 import logo from "../assets/image/logo.svg";
@@ -19,6 +20,13 @@ import registerUser from "../redux/actions/register";
 
 // eslint-disable-next-line react/prefer-stateless-function
 class Register extends React.Component {
+  static get propTypes(){
+    return {
+      signUp: PropTypes.func,
+      registerData: PropTypes.object,
+      history: PropTypes.object,
+    }; 
+  }
   state = {
     user_name: "",
     email: "",

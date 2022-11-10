@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Navbar from "../component/NavBar";
-import http from "../helpers/http";
 import {
   Container,
   Card,
